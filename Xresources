@@ -1,0 +1,142 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+! use following command to enable the settings in this file
+! $ xrdb -load fileName
+!
+! start comments on a new line
+! no trailing spaces at the end of the line
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!  XTerm settings  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! Xterm general appearance
+! XTerm*reverseVideo:   false
+XTerm*visualBell:     true
+XTerm*termName:       xterm
+XTerm*saveLines:      100000
+XTerm*scrollBar:      true
+XTerm*rightScrollBar: true
+XTerm*scrollKey:      true
+
+! fonts : use options: -fa "Font Name" -fs 11
+! copied from X11/app-defaults/XTerm, labeled Large
+XTerm*font: -*-fixed-medium-r-*-*-24-*-*-*-*-*-*-*
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Settings for a black background
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! -bg and -fg
+XTerm*background:    black
+XTerm*foreground:    LightGray
+
+! miscellaneous color settings
+XTerm*underLine:          on
+XTerm*colorMode:          on
+XTerm*colorBD:            DodgerBlue
+XTerm*colorBDMode:        true
+XTerm*colorUL:            Green
+XTerm*colorULMode:        on
+XTerm*dynamicColors:      off
+XTerm*highlightSelection: true
+
+! 16 terminal colors
+
+! Black
+XTerm*color0:        Black
+XTerm*color8:        Gray20
+
+! Red
+XTerm*color1:        Red
+XTerm*color9:        Tomato
+! also Red, Tomato, OrangeRed, Salmon, Pink
+
+! Green
+XTerm*color2:        Green
+XTerm*color10:       LimeGreen
+! also SpringGreen, LimeGreen or Lime or LawnGreen
+
+! Yellow
+XTerm*color3:        Gold
+XTerm*color11:       Yellow
+
+! Blue
+XTerm*color4:        RoyalBlue
+XTerm*color12:       DodgerBlue
+! also SteelBlue
+
+! Magenta
+XTerm*color5:        MediumVioletRed
+!Orchid or Magenta
+XTerm*color13:       Magenta
+
+! Cyan
+XTerm*color6:        DarkTurquoise
+XTerm*color14:       Cyan
+!Aqua or Turquoise or LightCyan
+
+! White
+XTerm*color7:        gray70
+XTerm*color15:       white
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!  Aterm settings  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+! imitating the settings from gnome-terminal
+! Background and foreground
+Aterm*foreground:    Xterm*foreground
+Aterm*background:    Xterm*background
+
+! fonts
+! copied from X11/app-defaults/XTerm, labeled Large
+Aterm*font: Xterm*font
+
+! scroll settings
+Aterm*scrollBar:   Xterm*scrollBar
+Aterm*scrollBar_right: Xterm*rightScrollBar
+Aterm*saveLines:   Xterm*saveLines
+Aterm*scrollKey:   Xterm*scrollKey
+
+
+! 16 terminal colors
+
+! Black
+Aterm*color0:        Xterm*color0
+Aterm*color8:        Xterm*color8
+! or Gray20 perhaps
+
+! Red
+Aterm*color1:        Xterm*color1
+Aterm*color9:        Xterm*color9
+
+! Green
+Aterm*color2:        Xterm*color2
+Aterm*color10:       Xterm*color10
+! also MediumSpringGreen or Lime or LawnGreen
+
+! Yellow
+Aterm*color3:        Xterm*color3
+Aterm*color11:       Xterm*color11
+
+! Blue
+Aterm*color4:        Xterm*color4
+Aterm*color12:       Xterm*color12
+
+! Magenta
+Aterm*color5:        Xterm*color5
+!Orchid or Magenta
+Aterm*color13:       Xterm*color13
+
+! Cyan
+Aterm*color6:        Xterm*color6
+Aterm*color14:       Xterm*color14
+!Aqua or Turquoise or LightCyan
+
+! White
+Aterm*color7:        Xterm*color7
+Aterm*color15:       Xterm*color15

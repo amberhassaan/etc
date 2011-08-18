@@ -1,0 +1,255 @@
+#!/bin/bash
+
+###############################################################
+# source system files
+###############################################################
+# all settings put here
+# other bash related dot files just source this one
+SYSFILES="bashrc bash.bashrc bash_profile profile bash_completion"
+
+for file in $SYSFILES; do
+  if [ -f "/etc/$file" ]; then
+    . /etc/$file
+  fi;
+done;
+
+###############################################################
+# source Xresources if running X session
+###############################################################
+if [[ -n "$DISPLAY" ]]; then
+  xrdb -load $HOME/.Xresources
+fi
+
+
+
+###############################################################
+# command prompt
+###############################################################
+# my prompt
+# \[\] may contain a sequence of non printing chars
+# the color code is of the form: \033[B;MNm
+# where B is in {0,1}
+# N is a decimal val of 3 bit binary, where 3 bits represent RGB
+# M is number, decides the how to display the color
+# m is literal
+# 00m is the default color, black on white and gray on black
+# e.g. 1 = red, 2=green, 4=blue
+# below we have user and host in purple, working directory in blue and rest in black
+
+RED="\[\033[0;31m\]"
+GREEN="\[\033[0;32m\]"
+BLUE="\[\033[0;34m\]"
+MAGENTA="\[\033[0;35m\]"
+CYAN="\[\033[0;36m\]"
+YELLOW="\[\033[0;33m\]"
+NOCOLOR="\[\033[0;00m\]"
+
+function parse_git_branch () {
+  local B=$(git branch 2> /dev/null | fgrep '*' | awk '{print $2}')
+  if [[ -n "$B" ]] ; then 
+    echo ":<$B>"
+  fi
+}
+
+# PS1="$GREEN\u@machine$NO_COLOUR:\w$YELLOW\$(parse_git_branch)$NO_COLOUR\$ "
+
+endmarker='\$'
+if [ "$HOME" == "/root" ]; then
+  endmarker='#'
+fi;
+
+case "$TERM" in
+  xterm*|rxvt|screen)
+    # default user color is purple
+    PS1="${MAGENTA}[\u@\h]${NOCOLOR}:${BLUE}\w${NOCOLOR}${YELLOW}\$(parse_git_branch)${NOCOLOR}\n$endmarker "
+    ;;
+  *)
+    PS1="[\u@\h]:\w\$(parse_git_branch)\n$endmarker "
+    ;;
+esac
+
+# a way to reset the prompt
+alias rstPS1="export PS1='[\u@\h]:\w\$(parse_git_branch)\n\$ '"
+
+###############################################################
+# shell settings and options
+###############################################################
+
+# where's my inputrc: see 'man readline'
+export INPUTRC=$HOME/.inputrc
+
+# vi mode command line editing
+set -o vi
+# on some terminals e.g. the ones in mac, tab completion stops working in vi mode
+bind '"\t":complete'
+
+
+# for directories in CDPATH, you don't need to give full path name. 
+# Note: '.' must be in CDPATH
+# uncomment following line to enable
+# export CDPATH=.:$HOME:~:$HOME/workspace
+
+# fix spelling errors in cd command
+shopt -s cdspell
+
+
+
+
+############################
+# history related settings
+############################
+
+
+# history size
+export HISTSIZE=9000 HISTFILESIZE=9000
+
+# avoid duplicate commands in history
+# ignoreboth removes consecutive commands and commands starting with space
+# erasedup removes all duplicates
+
+export HISTCONTROL=ignoreboth:erasedup
+
+# don't put the following in history
+export HISTIGNORE="ls:cd:cd ~:exit"
+
+# by default shell overwrites the history file on exit, 
+# ideally we'd want append
+shopt -s histappend
+
+# put multi line commands as a single line in the history
+shopt -s cmdhist
+
+
+#############
+# Merge history from all the shells
+#############
+# goals: 
+#   each command from each shell is put into the history file
+#   each shell reads from the history file to get uptodate
+# impl:
+#   we put code in PROMPT_COMMAND to update history, this code will
+#     be executed every time we enter a command or press enter
+# caveat: 
+#   we can no longer maintain the uniqueness of history. 
+#   after switching to another shell, the history is not updated until we press
+#   enter
+
+BASH_TMP_HISTORY=$HOME/.bash_tmp_history
+function histRW() {
+  # write to $HISTFILE
+  history -a 
+
+  # remove consecutive duplicates; 
+  # can use sort to remove all duplicates, but that changes the order of history
+  # gotcha: can't read and write from the same file
+  # gotcha: history -a should write to $HISTFILE, so that its size remains
+  # finite due to truncation done by bash.
+  uniq $HISTFILE > $BASH_TMP_HISTORY
+
+  # read from $BASH_TMP_HISTORY
+  history -r $BASH_TMP_HISTORY
+}
+
+# Uncomment the following lines to enable history merge feature 
+# # put true if PROMPT_COMMAND not defined
+# PCMD=${PROMPT_COMMAND-"true"}
+# export PROMPT_COMMAND="$PCMD; histRW";
+
+###########################
+# pattern matching (glob) 
+# and completion related settings
+###########################
+
+# enables expansion of file names beginning with '.'
+shopt -s dotglob
+
+# extended pattern expansion
+# ?(pattern-list) Matches zero or one occurrence of the given patterns
+# *(pattern-list) Matches zero or more occurrences of the given patterns
+# +(pattern-list) Matches one or more occurrences of the given patterns
+# @(pattern-list) Matches one of the given patterns 
+# !(pattern-list) Matches anything except one of the given patterns
+shopt -s extglob
+
+
+
+
+
+
+###############################################################
+# The aliases
+###############################################################
+# remove should be checked
+# use \rm to override
+alias rm='rm -i'
+alias cp='cp -i'
+
+# aliases for listing
+alias ls='ls --color'
+alias ll='ls -ltr'
+alias la='ls -al'
+alias lr='ls -altr'
+
+# using perl instead of awk. Provides some features that awk does not have
+# see http://sial.org/howto/perl/one-liner/
+alias pawk='perl -lane'
+
+###############################################################
+# functions
+###############################################################
+
+# a function that serves as an alias to pushd
+function pd() {
+  # number of directories we want on stack is MAX+1
+  local MAX=7
+
+  # -p prints one entry per line
+  local LEN=$(dirs -p | wc -l);
+
+  local DIFF=$((LEN-MAX))
+
+  if [[ $DIFF -gt 0 ]]; then
+    for i in $(seq 1 $DIFF); do
+      # -n supresses the change of directory, 
+      # -0 removes the rightmost entry, assuming it's the oldest
+      popd -n -0
+    done
+  fi
+
+  # finally call pushd with the same arguments
+  pushd "$@"
+}
+
+###############################################################
+# Different variables
+###############################################################
+# MAIL is used by mutt
+export MAIL=/mail/${USER}/Maildir/
+
+# default printer: change this to suit your needs.
+# pr3swd is the duplex queue on our black and white laser printer in the
+# southwest quadrant of the 3rd floor of ICES.
+export PRINTER=cp4104d
+
+# default editor: this is used by svn, etc.
+# the only safe default for EDITOR is one which instructs the user how to quit.
+# most users will change this to vim or emacs.
+export EDITOR=vim
+
+# uncomment this to use a prompt which indicates exit status
+#if [ -r /etc/bash/prompt ]; then
+#    . /etc/bash/prompt
+#fi
+
+
+
+# customizations local to this machine may be put in the following file
+if [[ -f $HOME/etc/bash_local ]]; then
+   . $HOME/etc/bash_local
+fi
+
+
+# funny quotes and messages
+if [ -x $HOME/bin/mooo ]; then
+  $HOME/bin/mooo
+fi;

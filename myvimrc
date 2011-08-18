@@ -1,0 +1,304 @@
+" first source what's already there
+"
+"
+
+let sysVimrc = "/etc/vimrc"
+if filereadable(sysVimrc) == 0
+  let sysVimrc = "/usr/share/vim/vimrc"
+endif
+
+if filereadable(sysVimrc) == 1
+  execute "source " . sysVimrc
+endif
+
+
+
+source $VIMRUNTIME/vimrc_example.vim
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" terminal related settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" background : light|dark
+set background=light
+
+if &term =~ "xterm"
+  " set number of terminal colors
+  " 16 is standard, but more are available
+  set t_Co=256
+endif
+
+" load the color scheme now
+colorscheme grayOnBlack
+
+" enable mouse for 'a'll modes, but avoid using mouse too much
+" after this setting, hold shift (+ middle click) when pasting text from other applications
+set ttymouse=xterm2
+set mouse=a
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" Set different options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+" filetype setting read by many below
+filetype on
+filetype indent on
+
+" send all backup files to one directory ~/.backup
+set backupdir=~/.backup
+
+
+" present a menu when completing : commands, you can also try Ctrl-D after :
+set wildmenu
+
+" don't be comaptible with vi, vim has enough good stuff to say goodbye to vi
+set nocompatible
+
+syntax enable
+
+"""""""""""""""""""""""""""""""
+" indentations
+"""""""""""""""""""""""""""""""
+set autoindent
+set nocindent
+set smartindent
+
+
+" set the indentations
+set tabstop=3
+set shiftwidth=3
+" insert spaces instead of tabs
+set expandtab
+
+" width of the lines in chars, auto wraps lines after that
+set textwidth=100
+
+
+
+
+
+
+"""""""""""""""""""""""""""""""
+" search related
+"""""""""""""""""""""""""""""""
+
+" highlight the searches
+set hls
+
+" incremental search
+set incsearch
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" Settings for ConqueTerm plugin 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set your terminal type. I(author) strongl recommend leaving this as vt100, 
+" however more features may be enabled with xterm.
+let g:ConqueTerm_TERM = 'xterm'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" Settings for taglist plugin 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" let Tlist_Ctags_Cmd='/usr/bin/ctags'
+let Tlist_Use_Right_Window = 1
+let Tlist_WinWidth = 20
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""" settings for MultipleSearch plugin 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" setting equal to the number of colors in the terminal
+let g:MultipleSearchMaxColors=&t_Co
+
+" used by the keys n, N.
+" the idea is to not call MultipleSearch again
+" if the user presses n,N multiple times.
+" Because every call to MultipleSearch will use up a color
+" and recent searches will lose their highlighting.
+" So only call on a newer search.
+
+function! UseMultipleSearch()
+  if !exists("g:Gsrch") ||  @/ != g:Gsrch
+    call MultipleSearch#MultipleSearch(0,@/)
+    let g:Gsrch=@/
+  endif
+endfunction
+
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" All mode mappings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" move up and down in long wraped around lines
+noremap j gj
+noremap k gk
+
+" mapping left double clik to enlarge a window
+" mouse should be enabled with :set mouse=a
+noremap <2-LeftMouse> <C-W>_
+
+
+" mappings for commenting and uncommenting, see below for commands and functions
+noremap \c :Comment<CR>
+noremap \u :UnComment<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" normal mode mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl-W for window commands has been mapped to \
+nnoremap \ <C-w>
+" special mapping to maximize vertical windows
+nnoremap \J <C-w>j<C-w>_
+nnoremap \K <C-w>k<C-w>_
+
+
+" use V (capital V) for block visual mode, easier than Ctrl-v and safer, can use on windows
+" as well
+nnoremap V <C-v>
+
+
+" map n & N to call MultipleSearch function from MultipleSearch.vim
+" the effect is to call :Search on whatever was searched using / or ? or * or  #
+" and keep the recent searches highlighted
+" @/ contains the most recent search
+nnoremap <silent> n n:call UseMultipleSearch()<CR>
+nnoremap <silent> N N:call UseMultipleSearch()<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" Visual Mode mappings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+" Use visual mode (v) to highlight text and then search the highlighted text
+" forward search with * in visual mode
+" and backward search with # in visual mode
+" see :help Magic
+
+" vmap <silent> * y :let @/=@"<CR>//<CR>
+vnoremap <silent> * y/\V<C-R>=escape(@",'\/')<CR>/<CR>
+ 
+" vmap <silent> # y :let @/=@"<CR>??<CR>
+vnoremap <silent> # y?\V<C-R>=escape(@",'\/')<CR>?<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" Insert mode mappings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" uses the CleverTab() function below
+inoremap <Tab> <C-R>=CleverTab()<CR>
+
+" Taken from ':help ins-completion'
+" modified by amber
+" The idea here is if the character c behind the current cursor
+" position is alphanumeric, the user intends to complete it and <Tab>
+" should complete it. If c is not alphnumeric then it's probably a literal
+" <Tab>; since a user has to start typing a word to complete it. Having typed
+" no character, the completion would suggest garbage only.
+
+function! CleverTab()
+    " getline . gets the current line
+    " col(.)-2 is the index of the character behind the cursor
+    let c = getline(".")[ col(".") - 2]
+   if c =~ '\w'
+      return "\<C-N>"
+   else
+      return "\<Tab>"
+    endif
+endfunction
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" Commenting/Uncommenting commands
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" DESCRIPTION
+" commenting and uncommenting of code
+" automatically based on the filetype setting
+" which can be set by e.g. :set filetype=cpp
+" and vim reads it by &filetype
+"
+" USAGE
+" [range]Comment
+" [range]Uncomment
+"
+" EXAMPLES:
+" :Comment
+" :.,.+3 UnComment
+" :'<,'>Comment
+
+" we also want to save the indentation when commenting/uncommenting the
+" line
+
+function! GenComments(l1,l2)
+    let f=&filetype "read filetype setting
+
+    if f==? 'c' "equal ignore case
+        execute a:l1.','.a:l2.' s#^\(\s*\)\(.*\)$#\1/* \2 */#'
+    elseif f =~ 'cpp\|java\|verilog'
+        execute a:l1.','.a:l2.' s#^\(\s*\)#\1// #'
+    elseif f =~ 'asm'
+        execute a:l1.','.a:l2.' s/^\(\s*\)/\1; /'
+    elseif f =~ 'tex'
+        execute a:l1.','.a:l2.' s/^\(\s*\)/\1% /'
+    elseif f =~ 'vim'
+        execute a:l1.','.a:l2.' s/^\(\s*\)/\1\" /'
+    elseif f =~ '^.\+ml' "html and xml
+        execute a:l1.','.a:l2.' s/^\(\s*\)\(.*\)$/\1<!-- \2 -->/'
+    elseif f =~ 'css'
+        execute a:l1.','.a:l2.' s#^\(\s*\)\(.*\)$#\1/* \2 */#'
+    elseif f =~ 'spice'
+        execute a:l1.','.a:l2.' s/^\(\s*\)/\1* /'
+    else
+        " handle bash, awk, perl etc...
+        execute a:l1.','.a:l2.' s/^\(\s*\)/\1# /'
+    endif
+endfunction
+
+
+function! DelComments(l1, l2)
+    let f=&filetype "read filetype setting
+
+    " all substitute patters check for an optional space after comment
+    " and remove it i.e. / \?/
+
+    if f==? 'c' "equal ignore case
+        execute a:l1.','.a:l2.' s#^\(\s*\)/\* \?\(.*\)\*/$#\1\2#'
+    elseif f =~ 'cpp\|java\|verilog'
+        execute a:l1.','.a:l2.' s#^\(\s*\)// \?#\1#'
+    elseif f =~ 'asm'
+        execute a:l1.','.a:l2.' s/^\(\s*\); \?/\1/'
+    elseif f =~ 'tex'
+        execute a:l1.','.a:l2.' s/^\(\s*\)% \?/\1/'
+    elseif f =~ 'vim'
+        execute a:l1.','.a:l2.' s/^\(\s*\)\" \?/\1/'
+    elseif f =~ '^.\+ml' "html and xml
+        execute a:l1.','.a:l2.' s/^\(\s*\)<!-- \?\(.*\)-->$/\1\2/'
+    elseif f =~ 'css'
+        execute a:l1.','.a:l2.' s#^\(\s*\)/\* \?\(.*\)\*/$#\1\2#'
+    elseif f =~ 'spice'
+        execute a:l1.','.a:l2.' s/^\(\s*\)\* \?/\1/'
+    else
+        " handle bash, awk, perl etc...
+        execute a:l1.','.a:l2.' s/^\(\s*\)# \?/\1/'
+    endif
+endfunction
+   
+" use these commands from command mode
+" <line1> <line2> are start and end of range
+command!  -nargs=0 -range Comment call GenComments(<line1>, <line2> )
+command!  -nargs=0 -range UnComment call DelComments(<line1>, <line2> )
+
+
+
+

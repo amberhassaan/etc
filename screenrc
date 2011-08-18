@@ -1,0 +1,68 @@
+##############################################################
+# Status line
+##############################################################
+hardstatus on  
+hardstatus alwayslastline
+hardstatus string '%{= kg}[ %{g}%H %{g}][ %{= kw}%-Lw%{= bk}%50>%n%f* %t%{= kw} %+Lw%<%= %{g}][%{b} %Y-%m-%d %{w}%c %{g}]'
+
+startup_message off  
+
+defscrollback 99000
+
+##############################################################
+# terminal settings
+##############################################################
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# erase background with current bg color
+defbce "on"
+
+# change the name of the terminal; default is 'screen'
+term 'xterm'
+
+# a hack for the mouse
+terminfo xterm*|rxvt|screen ti@:te@
+
+##############################################################
+# terminal shells
+##############################################################
+
+# Default screens. use Ctrl-a N to switch to shell N
+screen -t sh_0  0
+screen -t sh_1  1
+screen -t sh_2  2
+screen -t sh_3  3   
+screen -t sh_4  4
+screen -t sh_5  5
+screen -t sh_6  6
+screen -t sh_7  7
+screen -t sh_8  8
+screen -t sh_9  9
+screen -t sh_0  0
+
+
+# # Ctrl-a N moves through shells 0-9 only. to enable 
+# # more shells 10-19, uncomment following. and use Ctrl-a Shift N to 
+# # swith to shell 1N
+# 
+# bind  ! select 11
+# bind  @ select 12
+# bind \# select 13
+# bind  $ select 14
+# bind  % select 15
+# bind \^ select 16
+# bind  & select 17
+# bind  * select 18
+# bind  ( select 19
+# bind  ) select 10
+# 
+# screen -t sh_11  11
+# screen -t sh_12  12
+# screen -t sh_13  13   
+# screen -t sh_14  14
+# screen -t sh_15  15
+# screen -t sh_16  16
+# screen -t sh_17  17

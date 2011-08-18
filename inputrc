@@ -1,0 +1,29 @@
+# for keymap related stuff for bash and others
+# see man readline
+
+# source the system provided file
+$include /etc/inputrc
+
+set editing-mode vi
+set keymap vi
+
+
+# these allow you to start typing a command and
+#
+# use the up/down arrow to auto complete from
+#
+# commands in your history
+# <down> key
+"\e[B": history-search-forward
+# <up> key
+"\e[A": history-search-backward
+
+# if you don't want to hit the tab key twice to present a list of completions
+set show-all-if-ambiguous on
+
+
+# this makes the "delete" key work rather than
+#
+# just entering a ~
+#
+"\e[3~": delete-char

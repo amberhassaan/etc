@@ -1,0 +1,19 @@
+# comments in the beginning of the line only, whole line is skipped
+# if comment found anywhere
+
+# make sure the file is correct, the script doesn't do error checking
+# each non-comment line contains two paths relative to $HOME
+
+#File-name-in-etc Path-name-relative-to-$HOME   
+bashrc            .bashrc                       
+# color-schemes     .kde4/share/apps/color-schemes
+fonts.conf        .fonts.conf                   
+fonts             .fonts                        
+gdbinit           .gdbinit
+inputrc           .inputrc                      
+profile           .profile                      
+screenrc          .screenrc                     
+vimrc             .vimrc                        
+vim               .vim                          
+xinitrc           .xinitrc
+Xresources        .Xresources                   
