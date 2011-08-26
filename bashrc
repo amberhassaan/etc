@@ -7,6 +7,7 @@
 # * X Terminals (xterm, konsole, gnome-terminal)
 # * running remote commands via ssh
 
-. $HOME/etc/mybashrc
+# git over ssh doesn't like anything being printed to stdout, so redirecting stdout to stderr
+. $HOME/etc/mybashrc 1>&2 
 
 # source /etc/bash.bashrc

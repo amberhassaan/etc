@@ -9,7 +9,8 @@ SYSFILES="bashrc bash.bashrc bash_profile profile bash_completion"
 
 for file in $SYSFILES; do
   if [ -f "/etc/$file" ]; then
-    . /etc/$file
+    # source /etc/$file > /dev/null 2>&1
+    source /etc/$file
   fi;
 done;
 
