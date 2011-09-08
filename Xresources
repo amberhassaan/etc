@@ -11,9 +11,13 @@
 !!!!!!!!!!!!!!!!!!!!!!!  XTerm settings  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+*vt100.translations: #override \n\
+        Ctrl ~Shift <Key>Tab: string(0x1b) string("[27;5;9~") \n \
+        Ctrl Shift <Key>Tab: string(0x1b) string("[27;6;9~") \n
+
 ! Xterm general appearance
 ! XTerm*reverseVideo:   false
-XTerm*visualBell:     true
+XTerm*visualBell:     false
 XTerm*termName:       xterm
 XTerm*saveLines:      100000
 XTerm*scrollBar:      true
@@ -22,7 +26,7 @@ XTerm*scrollKey:      true
 
 ! fonts : use options: -fa "Font Name" -fs 11
 ! copied from X11/app-defaults/XTerm, labeled Large
-XTerm*font: -*-fixed-medium-r-*-*-24-*-*-*-*-*-*-*
+XTerm*font: 9x15
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Settings for a black background

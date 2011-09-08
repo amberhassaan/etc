@@ -26,6 +26,12 @@ term 'xterm'
 # a hack for the mouse
 terminfo xterm*|rxvt|screen ti@:te@
 
+# Ctrl-Tab
+bindkey "^[[27;5;9~" next
+
+# Ctrl-Shift-Tab
+bindkey "^[[27;6;9~" prev
+
 ##############################################################
 # terminal shells
 ##############################################################
@@ -41,7 +47,6 @@ screen -t sh_6  6
 screen -t sh_7  7
 screen -t sh_8  8
 screen -t sh_9  9
-screen -t sh_0  0
 
 
 # # Ctrl-a N moves through shells 0-9 only. to enable 
