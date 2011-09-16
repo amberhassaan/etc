@@ -1,0 +1,17 @@
+[diff]
+  tool = vimdiff
+
+[merge]
+  tool = vimdiff
+
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+	rebase = true
+[user]
+	name = Muhammad Amber Hassaan
+	email = amber_474@yahoo.com
+[branch]
+	autosetuprebase = always
+[push]
+	default = tracking

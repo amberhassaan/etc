@@ -10,6 +10,7 @@ bashrc            .bashrc
 fonts.conf        .fonts.conf                   
 fonts             .fonts                        
 gdbinit           .gdbinit
+gitconfig         .gitconfig
 inputrc           .inputrc                      
 profile           .profile                      
 screenrc          .screenrc                     
