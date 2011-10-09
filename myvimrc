@@ -211,7 +211,8 @@ function! CleverTab()
     " col(.)-2 is the index of the character behind the cursor
     let c = getline(".")[ col(".") - 2]
    if c =~ '\w'
-      return "\<C-N>"
+      " look for previous instances
+      return "\<C-P>"
    else
       return "\<Tab>"
     endif

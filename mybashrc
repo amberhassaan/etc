@@ -55,14 +55,17 @@ function parse_git_branch () {
 # PS1="$GREEN\u@machine$NO_COLOUR:\w$YELLOW\$(parse_git_branch)$NO_COLOUR\$ "
 
 endmarker='\$'
+USERCOLOR="$MAGENTA"
 if [ "$HOME" == "/root" ]; then
   endmarker='#'
+  USERCOLOR="$RED"
 fi;
+
 
 case "$TERM" in
   xterm*|rxvt|screen)
     # default user color is purple
-    PS1="${MAGENTA}[\u@\h]${NOCOLOR}:${BLUE}\w${NOCOLOR}${YELLOW}\$(parse_git_branch)${NOCOLOR}\n$endmarker "
+    PS1="${USERCOLOR}[\u@\h]${NOCOLOR}:${BLUE}\w${NOCOLOR}${YELLOW}\$(parse_git_branch)${NOCOLOR}\n$endmarker "
     ;;
   *)
     PS1="[\u@\h]:\w\$(parse_git_branch)\n$endmarker "
