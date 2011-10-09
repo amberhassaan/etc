@@ -124,7 +124,8 @@ let g:MultipleSearchMaxColors=&t_Co
 
 function! UseMultipleSearch()
   if !exists("g:Gsrch") ||  @/ != g:Gsrch
-    call MultipleSearch#MultipleSearch(0,@/)
+    " call MultipleSearch#MultipleSearch(1,@/)
+    execute ":SearchBuffers ".@/
     let g:Gsrch=@/
   endif
 endfunction

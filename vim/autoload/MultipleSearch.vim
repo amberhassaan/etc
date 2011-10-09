@@ -67,7 +67,7 @@ set cpo&vim
 " and Benji Fisher at http://groups.yahoo.com/group/vimdev/message/26788
 " -----
 function! s:Strntok( s, tok, n)
-    return matchstr( a:s.a:tok[0], '\v(\zs([^'.a:tok.']*)\ze['.a:tok.']){'.a:n.'}')
+  return matchstr( a:s.a:tok[0], '\v(\zs([^'.a:tok.']*)\ze['.a:tok.']){'.a:n.'}')
 endfun
 
 " -----
@@ -76,91 +76,91 @@ endfun
 " plugin was first loaded.
 " -----
 function! s:MultipleSearchInit()
-    let s:save_hls = &hls
-    let s:save_search = @/
+  let s:save_hls = &hls
+  let s:save_search = @/
 
-    " Specify a maximum number of colors to use. 
-    if exists('g:MultipleSearchMaxColors')
-        let s:MaxColors = g:MultipleSearchMaxColors
-    else
-        let s:MaxColors = 4
-    endif
+  " Specify a maximum number of colors to use. 
+  if exists('g:MultipleSearchMaxColors')
+    let s:MaxColors = g:MultipleSearchMaxColors
+  else
+    let s:MaxColors = 4
+  endif
 
-    " Define the sequence of colors to use for searches.
-    if exists('g:MultipleSearchColorSequence')
-        let s:ColorSequence = g:MultipleSearchColorSequence
-    else
-        let s:ColorSequence = "red,yellow,blue,green,magenta,cyan,gray,brown"
-    endif
+  " Define the sequence of colors to use for searches.
+  if exists('g:MultipleSearchColorSequence')
+    let s:ColorSequence = g:MultipleSearchColorSequence
+  else
+    let s:ColorSequence = "red,yellow,blue,green,magenta,cyan,gray,brown"
+  endif
 
-    " Define the text color for searches, so that it can still be read against the
-    " colored background.
-    if exists('g:MultipleSearchTextColorSequence')
-        let s:TextColorSequence = g:MultipleSearchTextColorSequence
-    else
-        let s:TextColorSequence = "white,black,white,black,white,black,black,white"
-    endif
+  " Define the text color for searches, so that it can still be read against the
+  " colored background.
+  if exists('g:MultipleSearchTextColorSequence')
+    let s:TextColorSequence = g:MultipleSearchTextColorSequence
+  else
+    let s:TextColorSequence = "white,black,white,black,white,black,black,white"
+  endif
 
-    " Start off with the first color
-    let s:colorToUse = 0
+  " Start off with the first color
+  let s:colorToUse = 0
 
-    let s:colorsInUse = 0
+  let s:colorsInUse = 0
 
-    " Sanity check: make sure MaxColors is not larger than the number of
-    " colors in ColorSequence or the corresponding TextColorSequence.
-    let s:MaxColors = s:Min(s:MaxColors, s:ItemCount(s:ColorSequence . ','),
-                \     s:ItemCount(s:TextColorSequence . ','))
+  " Sanity check: make sure MaxColors is not larger than the number of
+  " colors in ColorSequence or the corresponding TextColorSequence.
+  let s:MaxColors = s:Min(s:MaxColors, s:ItemCount(s:ColorSequence . ','),
+        \     s:ItemCount(s:TextColorSequence . ','))
 
-    let loopCount = 0
-    while loopCount < s:MaxColors
-        " Define the colors to use
-	let bgColor = s:Strntok(s:ColorSequence, ',', loopCount + 1)
-	let fgColor = s:Strntok(s:TextColorSequence, ',', loopCount + 1)
-        execute 'highlight MultipleSearch' . loopCount
-           \ . ' ctermbg=' . bgColor . ' guibg=' . bgColor
-           \ . ' ctermfg=' . fgColor . ' guifg=' . fgColor
-        let loopCount = loopCount + 1
-    endwhile
+  let loopCount = 0
+  while loopCount < s:MaxColors
+    " Define the colors to use
+    let bgColor = s:Strntok(s:ColorSequence, ',', loopCount + 1)
+    let fgColor = s:Strntok(s:TextColorSequence, ',', loopCount + 1)
+    execute 'highlight MultipleSearch' . loopCount
+          \ . ' ctermbg=' . bgColor . ' guibg=' . bgColor
+          \ . ' ctermfg=' . fgColor . ' guifg=' . fgColor
+    let loopCount = loopCount + 1
+  endwhile
 endfunction
 
 " -----
 " ItemCount: Returns the number of items in the given string.
 " -----
 function! s:ItemCount(string)
-    let itemCount = 0
-    let newstring = a:string
+  let itemCount = 0
+  let newstring = a:string
+  let pos = stridx(newstring, ',')
+  while pos > -1
+    let itemCount = itemCount + 1
+    let newstring = strpart(newstring, pos + 1)
     let pos = stridx(newstring, ',')
-    while pos > -1
-        let itemCount = itemCount + 1
-        let newstring = strpart(newstring, pos + 1)
-        let pos = stridx(newstring, ',')
-    endwhile
-    return itemCount
+  endwhile
+  return itemCount
 endfunction
 
 " -----
 " Min: Returns the minimum of the given parameters.
 " -----
 function! s:Min(...)
-    let min = a:1
-    let index = 2
-    while index <= a:0
-        execute "if min > a:" . index . " | let min = a:" . index . " | endif"
-        let index = index + 1
-    endwhile
-    return min
+  let min = a:1
+  let index = 2
+  while index <= a:0
+    execute "if min > a:" . index . " | let min = a:" . index . " | endif"
+    let index = index + 1
+  endwhile
+  return min
 endfunction
 
 " -----
 " GetNextSequenceNumber: Determine the next Search color to use.
 " -----
 function! s:GetNextSequenceNumber()
-    let sequenceNumber = s:colorToUse % s:MaxColors
-    let s:colorToUse = s:colorToUse + 1
-    if s:colorToUse >= s:MaxColors
-        let s:colorToUse = 0
-    endif
-    return sequenceNumber
+  let sequenceNumber = s:colorToUse % s:MaxColors
+  let s:colorToUse = s:colorToUse + 1
+  if s:colorToUse >= s:MaxColors
+    let s:colorToUse = 0
+  endif
+  return sequenceNumber
 endfunction
 
 " -----
@@ -168,41 +168,43 @@ endfunction
 " current buffer.
 " -----
 function! s:DoSearch(useSearch, forwhat)
-    " Clear the previous highlighting for this color
-    execute 'silent syntax clear ' . a:useSearch
+  " Clear the previous highlighting for this color
+  " echo "clearing " . a:useSearch
+  execute 'silent syntax clear ' . a:useSearch
 
-    " amber: if you don't want hlsearch, comment the line below
-    " set nohls
+  " amber: if you don't want hlsearch, comment the line below
+  " set nohls
 
-    " Should it be a case-sensitive match or case-insensitive?
-    if &ignorecase == 1  
-        " If 'smartcase' is on and our search pattern has an upper-case
-        " character, do a case sensitive match.
-        if &smartcase == 1
-            " match() respects 'ignorecase', so turn it off for now
-            set noignorecase
+  " Should it be a case-sensitive match or case-insensitive?
+  if &ignorecase == 1  
+    " If 'smartcase' is on and our search pattern has an upper-case
+    " character, do a case sensitive match.
+    if &smartcase == 1
+      " match() respects 'ignorecase', so turn it off for now
+      set noignorecase
 
-            if match(a:forwhat, '\u') > -1
-                syntax case match
-            else
-                syntax case ignore
-            endif
-
-            " Be sure to turn 'ignorecase' back on!
-            set ignorecase
-        else
-            syntax case ignore
-        endif
-    else
+      if match(a:forwhat, '\u') > -1
         syntax case match
+      else
+        syntax case ignore
+      endif
+
+      " Be sure to turn 'ignorecase' back on!
+      set ignorecase
+    else
+      syntax case ignore
     endif
+  else
+    syntax case match
+  endif
 
-    " Highlight the new search
-    execute 'syntax match ' . a:useSearch . ' "' . a:forwhat . '" containedin=ALL'
+  " Highlight the new search
+  " echo "executing syntax match with ". a:useSearch
+  execute 'syntax match ' . a:useSearch . ' "' . a:forwhat . '" containedin=ALL'
 
-    " if( @/ !~ a:forwhat ) 
-       " let @/ = a:forwhat
-    " endif
+  " if( @/ !~ a:forwhat ) 
+  " let @/ = a:forwhat
+  " endif
 
 endfunction
 
@@ -212,13 +214,13 @@ endfunction
 " the main function without the autoload prefix.
 " -----
 if v:version < 700
-    function! MultipleSearch(allBuffers, forwhat)
-        call s:MultipleSearchCommon(a:allBuffers, a:forwhat)
-    endfunction
+  function! MultipleSearch(allBuffers, forwhat)
+    call s:MultipleSearchCommon(a:allBuffers, a:forwhat)
+  endfunction
 else
-    function! MultipleSearch#MultipleSearch(allBuffers, forwhat)
-        call s:MultipleSearchCommon(a:allBuffers, a:forwhat)
-    endfunction
+  function! MultipleSearch#MultipleSearch(allBuffers, forwhat)
+    call s:MultipleSearchCommon(a:allBuffers, a:forwhat)
+  endfunction
 endif
 
 " -----
@@ -226,103 +228,106 @@ endif
 " -----
 function! s:MultipleSearchCommon(allBuffers, forwhat)
 
-   let patt = a:forwhat
+  let patt = a:forwhat
 
-   if( l:patt =~ "[^\\\\]'" ) " if single quote not escaped
-      let l:patt = escape(l:patt,"'") " escape single quotes with a \ char
-   endif
+  if( l:patt =~ "[^\\\\]'" ) " if single quote not escaped
+    let l:patt = escape(l:patt,"'") " escape single quotes with a \ char
+  endif
 
-   if( l:patt =~ '[^\\]"' ) " if double quote not escaped
-      let l:patt = escape(l:patt, '"') " escape double quotes with a \ char
-   endif
+  if( l:patt =~ '[^\\]"' ) " if double quote not escaped
+    let l:patt = escape(l:patt, '"') " escape double quotes with a \ char
+  endif
 
-   " let l:patt = escape(l:patt,"'") " escape single quotes with a \ char
-   " let l:patt = escape(l:patt, '"') " escape double quotes with a \ char
-   " let l:patt = substitute(l:patt,'\\\\"','\\"','g')
-   " let l:patt = substitute(l:patt,"\\\\'","\\'",'g')
+  " let l:patt = escape(l:patt,"'") " escape single quotes with a \ char
+  " let l:patt = escape(l:patt, '"') " escape double quotes with a \ char
+  " let l:patt = substitute(l:patt,'\\\\"','\\"','g')
+  " let l:patt = substitute(l:patt,"\\\\'","\\'",'g')
 
-    " Determine which search color to use.
-    let s:curr_sequence = s:GetNextSequenceNumber()
-    let s:patterns{s:curr_sequence} = l:patt
-    let s:searchSequence = s:curr_sequence
-    if s:colorsInUse < s:MaxColors
-        let s:colorsInUse += 1
-    endif
-    let useSearch = "MultipleSearch" . s:curr_sequence
+  " Determine which search color to use.
+  let s:curr_sequence = s:GetNextSequenceNumber()
+  let s:patterns{s:curr_sequence} = l:patt
+  let s:searchSequence = s:curr_sequence
+  if s:colorsInUse < s:MaxColors
+    let s:colorsInUse += 1
+  endif
+  let useSearch = "MultipleSearch" . s:curr_sequence
 
-    if a:allBuffers
-	" If a:allBuffers is on, we want to show the match in all currently
-	" listed buffers.
-	let counter = 1
-	let bufCount = bufnr("$")
-	let current = bufnr("%")
-	let lz_save = &lazyredraw
+  if a:allBuffers
+    " If a:allBuffers is on, we want to show the match in all currently
+    " listed buffers.
+    let counter = 1
+    let bufCount = bufnr("$")
+    let current = bufnr("%")
+    let lz_save = &lazyredraw
 
-	" Loop through all the buffers and perform the search in each one.
-	while counter <= bufCount
-	    if buflisted(counter)
-		exec "buffer " . counter
-                call s:DoSearch(useSearch, l:patt)
-	    endif
-	    let counter = counter + 1
-	endwhile
-	exec "buffer " . current
-	let &lazyredraw = lz_save
-    else
-	" Otherwise, just search in the current buffer.
+    " Loop through all the buffers and perform the search in each one.
+    while counter <= bufCount
+      if buflisted(counter)
+        " echo "searching buffer ". counter
+        exec "silent sbuffer " . counter
         call s:DoSearch(useSearch, l:patt)
-    endif
+        close
+      endif
+      let counter = counter + 1
+    endwhile
+    
+    "exec "silent buffer " . current
+    let &lazyredraw = lz_save
+  else
+    " Otherwise, just search in the current buffer.
+    call s:DoSearch(useSearch, l:patt)
+  endif
 endfunction
 
 " ---
 " DoReset: Clear the highlighting
 " ---
 function! s:DoReset()
-    let seq = 0
-    while seq < s:MaxColors
-	execute 'syntax clear MultipleSearch' . seq
-	let seq = seq + 1
-    endwhile
-    let &hls = s:save_hls
-    let @/ = s:save_search
+  let seq = 0
+  while seq < s:MaxColors
+    execute 'syntax clear MultipleSearch' . seq
+    let seq = seq + 1
+  endwhile
+  let &hls = s:save_hls
+  let @/ = s:save_search
 endfunction
 
 " -----
 " MultipleSearchReset: Clear all the current search selections.
 " -----
 function! s:MultipleSearchReset(allBuffers)
-    let s:colorToUse = 0
-    let s:colorsInUse = 0
-    if a:allBuffers == 1
-	" If a:allBuffers is on, we want to clear the match in all
-	" currently listed buffers.
-	let current = bufnr("%")
-	bufdo call s:DoReset()
-	execute "buffer " . current
-    else
-	" Otherwise, just clear the current buffer.
-	call s:DoReset()
-    endif
+  let s:colorToUse = 0
+  let s:colorsInUse = 0
+  if a:allBuffers == 1
+    " If a:allBuffers is on, we want to clear the match in all
+    " currently listed buffers.
+    let current = bufnr("%")
+    bufdo call s:DoReset()
+    execute "buffer " . current
+  else
+    " Otherwise, just clear the current buffer.
+    call s:DoReset()
+  endif
 endfunction
 
 " -----
 " SearchNext: Switch to the next search item to cycle through with n and N
 " -----
 function! s:SearchNext(direction)
-    if a:direction == 0
-        let s:searchSequence += 1
-        if s:searchSequence >= s:colorsInUse
-            let s:searchSequence = 0
-        endif
-    else
-        let s:searchSequence -= 1
-        if s:searchSequence < 0
-            let s:searchSequence = s:colorsInUse - 1
-        endif
+  if a:direction == 0
+    let s:searchSequence += 1
+    if s:searchSequence >= s:colorsInUse
+      let s:searchSequence = 0
     endif
+  else
+    let s:searchSequence -= 1
+    if s:searchSequence < 0
+      let s:searchSequence = s:colorsInUse - 1
+    endif
+  endif
 
-    let @/ = s:patterns{s:searchSequence}
-    call search(s:patterns{s:searchSequence})
+  let @/ = s:patterns{s:searchSequence}
+  call search(s:patterns{s:searchSequence})
 endfunction
 
 
@@ -337,18 +342,18 @@ let &cpo = s:save_cpo
 " Clear the current search selections and start over with the first color in
 " the sequence.
 if !(exists(":SearchReset") == 2)
-    command -nargs=0 SearchReset :silent call <SID>MultipleSearchReset(0) 
+  command -nargs=0 SearchReset :silent call <SID>MultipleSearchReset(0) 
 endif
 
 " Clear the current search selections and start over with the first color in
 " the sequence.
 if !(exists(":SearchBuffersReset") == 2)
-    command -nargs=0 SearchBuffersReset :silent call <SID>MultipleSearchReset(1) 
+  command -nargs=0 SearchBuffersReset :silent call <SID>MultipleSearchReset(1) 
 endif
 
 " Reinitialize the script after changing one of the global preferences.
 if !(exists(":SearchReinit") == 2)
-    command -nargs=0 SearchReinit :silent call <SID>MultipleSearchInit() 
+  command -nargs=0 SearchReinit :silent call <SID>MultipleSearchInit() 
 endif
 
 nnoremap <silent> <Leader>n :call <SID>SearchNext(0)<CR>

@@ -38,7 +38,7 @@ endif
 
 " Thanks to Manuel Picaza for the following mapping to :Search the word under
 " the cursor.
-nnoremap <silent> <Leader>* :execute ':Search \<' . expand('<cword>') . '\>'<cr>
+nnoremap <silent> <Leader>* :execute ':SearchBuffers \<' . expand('<cword>') . '\>'<cr>
 
 " Following Manuel's idea, adapt the former 'Super Star' tip from vim.org to work with
 " :Search on a visual selection.
@@ -50,6 +50,6 @@ nnoremap <silent> <Leader>* :execute ':Search \<' . expand('<cword>') . '\>'<cr>
 " endfunction
 
 
-"amber
-vnoremap <silent> <Leader>* y:call MultipleSearch#MultipleSearch(0,'\V'.substitute(escape(@@,"\\/\"'"),"\n",'\\n','ge'))<CR>
+"amber 
+vnoremap <silent> <Leader>* y:execute ':SearchBuffers ' . '\V' . substitute(escape(@@,"\\/\"'"),"\n",'\\n','ge')<CR>
 " vnoremap <silent> <Leader>* y:call MultipleSearch#MultipleSearch(0,'\V'.substitute(@@,"\n",'\\n','ge'))<CR>
