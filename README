@@ -1,0 +1,6 @@
+Please checkout this code to $HOME/etc. Then
+
+cd $HOME/etc
+bash ./setup.sh
+
+will create symlinks to files in $HOME/etc, e.g. $HOME/.bashrc is a symlink to $HOME/etc/bashrc
