@@ -11,9 +11,16 @@
 !!!!!!!!!!!!!!!!!!!!!!!  XTerm settings  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-*vt100.translations: #override \n\
+! Overrides below:
+! - Lines 1 & 2: Redefines mappings for Ctrl-Shift-Tab and Ctrl-Tab, which is used 
+! then by 'screen' to switch shells
+! - Line 3: Trick to copy highlighted text into both PRIMARY and CLIPBOARD buffers of X window system
+! PRIMARY can be pasted by middle-click or by pressing both left and right click simultaneously
+! CLIPBOARD can be pasted by Ctrl-V
+XTerm*vt100.translations: #override \n\
         Ctrl ~Shift <Key>Tab: string(0x1b) string("[27;5;9~") \n \
-        Ctrl Shift <Key>Tab: string(0x1b) string("[27;6;9~") \n
+        Ctrl Shift <Key>Tab: string(0x1b) string("[27;6;9~") \n \
+        <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n
 
 ! Xterm general appearance
 ! XTerm*reverseVideo:   false
