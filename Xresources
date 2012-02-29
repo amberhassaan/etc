@@ -65,9 +65,10 @@ XTerm*color9:        Tomato
 ! also Red, Tomato, OrangeRed, Salmon, Pink
 
 ! Green
+! for dark: Green, ForestGreen
 XTerm*color2:        Green
 XTerm*color10:       LimeGreen
-! also SpringGreen, LimeGreen or Lime or LawnGreen
+! also SpringGreen, LimeGreen or Lime or LawnGreen, GreenYellow
 
 ! Yellow
 XTerm*color3:        Gold
@@ -79,8 +80,9 @@ XTerm*color12:       DodgerBlue
 ! also SteelBlue
 
 ! Magenta
-XTerm*color5:        MediumVioletRed
-!Orchid or Magenta
+! for dark: MediumVioletRed, DeepPink, Magenta
+XTerm*color5:        DeepPink
+! for light: Orchid or Magenta or Violet 
 XTerm*color13:       Magenta
 
 ! Cyan
