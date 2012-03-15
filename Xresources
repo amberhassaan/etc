@@ -46,7 +46,7 @@ XTerm*foreground:    LightGray
 ! miscellaneous color settings
 XTerm*underLine:          on
 XTerm*colorMode:          on
-XTerm*colorBD:            DodgerBlue
+XTerm*colorBD:            DeekSkyBlue
 XTerm*colorBDMode:        true
 XTerm*colorUL:            Green
 XTerm*colorULMode:        on
@@ -75,8 +75,10 @@ XTerm*color3:        Gold
 XTerm*color11:       Yellow
 
 ! Blue
-XTerm*color4:        RoyalBlue
-XTerm*color12:       DodgerBlue
+! for dark DodgerBlue or RoyalBlue
+XTerm*color4:        DodgerBlue
+! for light DeepSkyBlue or SkyBlue or CornflowerBlue
+XTerm*color12:       DeepSkyBlue
 ! also SteelBlue
 
 ! Magenta
