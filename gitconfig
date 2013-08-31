@@ -6,5 +6,14 @@
 
 [branch]
 	autosetuprebase = always
+
 [push]
 	default = tracking
+
+[alias]
+  graph = log --graph --all --oneline --decorate --color
+
+[url "git://anongit.kde.org/"]
+	insteadOf = kde:
+[url "git@git.kde.org:"]
+	pushInsteadOf = kde:
