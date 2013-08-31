@@ -18,3 +18,4 @@ vimrc             .vimrc
 vim               .vim                          
 xinitrc           .xinitrc
 Xresources        .Xresources                   
+xmonad            .xmonad

@@ -1,3 +1,7 @@
+[user]
+	name = M. Amber Hassaan
+	email = amber_474@yahoo.com
+
 [diff]
   tool = vimdiff
 
@@ -15,5 +19,6 @@
 
 [url "git://anongit.kde.org/"]
 	insteadOf = kde:
+
 [url "git@git.kde.org:"]
 	pushInsteadOf = kde:
