@@ -23,13 +23,13 @@ XTerm*vt100.translations: #override \n\
         <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n
 
 ! Xterm general appearance
-! XTerm*reverseVideo:   false
-XTerm*visualBell:     false
+! XTerm*reverseVideo:   off
+XTerm*visualBell:     off
 XTerm*termName:       xterm
 XTerm*saveLines:      100000
-XTerm*scrollBar:      true
-XTerm*rightScrollBar: true
-XTerm*scrollKey:      true
+XTerm*scrollBar:      on
+XTerm*rightScrollBar: on
+XTerm*scrollKey:      on
 
 ! fonts : use options: -fa "Font Name" -fs 11
 ! copied from X11/app-defaults/XTerm, labeled Large
@@ -46,12 +46,12 @@ XTerm*foreground:    LightGray
 ! miscellaneous color settings
 XTerm*underLine:          on
 XTerm*colorMode:          on
-XTerm*colorBD:            DeekSkyBlue
-XTerm*colorBDMode:        true
+XTerm*colorBD:            DeepSkyBlue
+XTerm*colorBDMode:        on
 XTerm*colorUL:            Green
 XTerm*colorULMode:        on
 XTerm*dynamicColors:      off
-XTerm*highlightSelection: true
+XTerm*highlightSelection: on
 
 ! 16 terminal colors
 

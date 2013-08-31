@@ -8,3 +8,11 @@
 	autosetuprebase = always
 [push]
 	default = tracking
+[user]
+	name = M. Amber Hassaan
+	email = amber_474@yahoo.com
+
+# [http]
+  # proxy=http://192.168.10.1:8080
+# [https]
+  # proxy=http://192.168.10.1:8080
