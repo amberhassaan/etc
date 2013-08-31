@@ -28,12 +28,16 @@ if &term =~ "xterm"
 endif
 
 " load the color scheme now
-colorscheme grayOnBlack
+" colorscheme grayOnBlack
+colorscheme relaxedgreen
 
 " enable mouse for 'a'll modes, but avoid using mouse too much
 " after this setting, hold shift (+ middle click) when pasting text from other applications
 set ttymouse=xterm2
 set mouse=a
+
+" smaller value for faster scrolling
+set ttyscroll=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""" Set different options
@@ -51,6 +55,8 @@ set backupdir=~/.backup
 
 " present a menu when completing : commands, you can also try Ctrl-D after :
 set wildmenu
+" show normal mode commands at the bottom of the screen
+set showcmd 
 
 " don't be comaptible with vi, vim has enough good stuff to say goodbye to vi
 set nocompatible
@@ -72,7 +78,7 @@ set shiftwidth=3
 set expandtab
 
 " width of the lines in chars, auto wraps lines after that
-set textwidth=100
+set textwidth=83
 
 
 
