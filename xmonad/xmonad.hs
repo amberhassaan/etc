@@ -38,6 +38,8 @@ import XMonad.Hooks.Minimize
 import XMonad.Hooks.ServerMode
 import XMonad.Hooks.WorkspaceByPos
 
+import XMonad.Util.EZConfig
+
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -74,21 +76,32 @@ floatingDeco l = buttonDeco shrinkText defaultThemeWithButtons l
 -- 
 -- tilingDeco l = windowSwitcherDecorationWithButtons shrinkText defaultThemeWithButtons (draggingVisualizer l)
 -- floatingDeco l = buttonDeco shrinkText defaultThemeWithButtons l
+--
 
-baseConfig = kde4Config
+myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
+
+baseConfig = xfceConfig
 
 myConfig = baseConfig { 
   manageHook = manageDocks <+> manageHook baseConfig,
   handleEventHook = myHandleEventHook <+> handleEventHook baseConfig,
   layoutHook = bluetileLayoutHook,
   focusedBorderColor= "#00ff00",
+  workspaces = myWorkspaces, 
   terminal = myXterm
-}
+} `additionalKeys` myKeys
 
--- myConfig = kde4Config { 
---   manageHook = manageHook kde4Config,
---   layoutHook = bluetileLayoutHook,
---   terminal = myXterm
--- }
+myKeys = 
+    [
+    -- other additional keys
+    ]
+    ++
+    [
+      ((m .|. mod1Mask, k), windows $ f i) -- Replace 'mod1Mask' with your mod key of choice.
+      | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
+      , (f, m) <- [(W.view, 0), (W.shift,
+          shiftMask)]
+    ]
+
 
 main = xmonad myConfig

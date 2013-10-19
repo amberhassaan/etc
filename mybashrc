@@ -101,6 +101,10 @@ bind '"\t":complete'
 shopt -s cdspell
 
 
+# update win size
+shopt -s checkwinsize
+
+
 
 
 ############################
