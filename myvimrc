@@ -43,6 +43,8 @@ set ttyscroll=1
 """""""""""""" Set different options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" clear the pager variable
+let $PAGER=''
 
 
 " filetype setting read by many below

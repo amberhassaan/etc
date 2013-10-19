@@ -48,7 +48,7 @@ NOCOLOR="\[\033[0;00m\]"
 function parse_git_branch () {
   local B=$(git branch 2> /dev/null | fgrep '*' | awk '{print $2}')
   if [[ -n "$B" ]] ; then 
-    echo ":<$B>"
+    echo "<$B>"
   fi
 }
 
@@ -62,18 +62,22 @@ if [ "$HOME" == "/root" ]; then
 fi;
 
 
+colorfulPS1="${GREEN}[\D{%T %F}]${NOCOLOR}${USERCOLOR}[\u@\h]${NOCOLOR}${BLUE}[\w]${NOCOLOR}${YELLOW}\$(parse_git_branch)${NOCOLOR}\n$endmarker "
+
+nocolorPS1="[\D{%T %F}][\u@\h][\w]\$(parse_git_branch)\n$endmarker "
+
 case "$TERM" in
-  xterm*|rxvt|screen)
+  xterm*|rxvt|screen|linux)
     # default user color is purple
-    PS1="${USERCOLOR}[\u@\h]${NOCOLOR}:${BLUE}\w${NOCOLOR}${YELLOW}\$(parse_git_branch)${NOCOLOR}\n$endmarker "
+    PS1=$colorfulPS1
     ;;
   *)
-    PS1="[\u@\h]:\w\$(parse_git_branch)\n$endmarker "
+    PS1=$nocolorPS1
     ;;
 esac
 
 # a way to reset the prompt
-alias rstPS1="export PS1='[\u@\h]:\w\$(parse_git_branch)\n\$ '"
+alias resetPS1='export PS1=$nocolorPS1'
 
 ###############################################################
 # shell settings and options
@@ -239,6 +243,14 @@ export PRINTER=cp4104d
 # the only safe default for EDITOR is one which instructs the user how to quit.
 # most users will change this to vim or emacs.
 export EDITOR=vim
+
+
+# using vim to view man pages
+export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+              vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
+              -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
+              -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+
 
 # uncomment this to use a prompt which indicates exit status
 #if [ -r /etc/bash/prompt ]; then
