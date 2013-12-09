@@ -9,21 +9,24 @@ import XMonad.Config.Gnome
 import XMonad.Layout.BorderResize
 import XMonad.Layout.BoringWindows
 import XMonad.Layout.ButtonDecoration
-import XMonad.Layout.ImageButtonDecoration
+import XMonad.Layout.Column
 import XMonad.Layout.Decoration
 import XMonad.Layout.DecorationAddons
 import XMonad.Layout.DraggingVisualizer
+import XMonad.Layout.Grid
+import XMonad.Layout.ImageButtonDecoration
 import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.Maximize
 import XMonad.Layout.Minimize
 import XMonad.Layout.MouseResizableTile
 import XMonad.Layout.Named
 import XMonad.Layout.NoBorders
+import XMonad.Layout.NoFrillsDecoration
 import XMonad.Layout.PositionStoreFloat
-import XMonad.Layout.WindowSwitcherDecoration
 import XMonad.Layout.ResizeScreen
-import XMonad.Layout.Grid
-import XMonad.Layout.ThreeColumns
+import XMonad.Layout.TwoPane
+import XMonad.Layout.WindowSwitcherDecoration
+import XMonad.Layout.ZoomRow
 
 import XMonad.Actions.BluetileCommands
 import XMonad.Actions.CycleWS
@@ -57,17 +60,25 @@ bluetileLayoutHook = avoidStruts $ minimize $ boringWindows $ (
     named "Fullscreen" fullscreen |||
     named "Tiled1" tiled1 |||
     named "Tiled2" tiled2 |||
-    named "Floating" floating
+    named "SingleRow" singleRow |||
+    named "SingleColumn" singleColumn |||
+    named "MyTwoPane" myTwoPane |||
+    named "MyTwoPaneMirrored" myTwoPaneMirrored |||
+    named "MyGrid" myGrid
     )
 -- where
 fullscreen =  maximize $ resizeVerticalBottom (-4) (noBorders  Full)
 tiled1 =  tilingDeco $ maximize $ mouseResizableTile { draggerType=BordersDragger } 
+tiled2 = tilingDeco $ maximize $ mouseResizableTileMirrored { draggerType=BordersDragger }
+singleRow = tilingDeco $ maximize $ zoomRow
+singleColumn = tilingDeco $ maximize $ Column (1.0)
+myTwoPane = tilingDeco $ maximize $ TwoPane (3/100) (1/2)
+myTwoPaneMirrored = tilingDeco $ maximize $ Mirror $ TwoPane (3/100) (1/2)
+myGrid = tilingDeco $ maximize $ Grid
 
-tiled2 = tilingDeco $ maximize $ mouseResizableTileMirrored { draggerType=BordersDragger } 
-floating =  floatingDeco $ maximize $ borderResize $ positionStoreFloat
 
 tilingDeco l = windowSwitcherDecorationWithImageButtons shrinkText defaultThemeWithImageButtons (draggingVisualizer l)
-floatingDeco l = buttonDeco shrinkText defaultThemeWithButtons l
+-- tilingDeco l = noFrillsDeco shrinkText defaultThemeWithButtons (draggingVisualizer l)
 
 -- floating = floatingDeco $ maximize $ borderResize $ positionStoreFloat
 -- tiled1 = tilingDeco $ maximize $ mouseResizableTileMirrored
@@ -78,7 +89,7 @@ floatingDeco l = buttonDeco shrinkText defaultThemeWithButtons l
 -- floatingDeco l = buttonDeco shrinkText defaultThemeWithButtons l
 --
 
-myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces = ["1","2","3","4","5","6","7"]
 
 baseConfig = xfceConfig
 

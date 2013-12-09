@@ -1,5 +1,9 @@
+
 # for keymap related stuff for bash and others
 # see man readline
+
+# disable beep
+set bell-style none
 
 # source the system provided file
 $include /etc/inputrc
