@@ -58,8 +58,8 @@ myHandleEventHook = minimizeEventHook
 
 bluetileLayoutHook = avoidStruts $ minimize $ boringWindows $ (
     named "Fullscreen" fullscreen |||
-    named "Tiled1" tiled1 |||
-    named "Tiled2" tiled2 |||
+    named "Tiled1" flexColumn |||
+    named "Tiled2" flexRow |||
     named "SingleRow" singleRow |||
     named "SingleColumn" singleColumn |||
     named "MyTwoPane" myTwoPane |||
@@ -68,12 +68,12 @@ bluetileLayoutHook = avoidStruts $ minimize $ boringWindows $ (
     )
 -- where
 fullscreen =  maximize $ resizeVerticalBottom (-4) (noBorders  Full)
-tiled1 =  tilingDeco $ maximize $ mouseResizableTile { draggerType=BordersDragger } 
-tiled2 = tilingDeco $ maximize $ mouseResizableTileMirrored { draggerType=BordersDragger }
-singleRow = tilingDeco $ maximize $ zoomRow
-singleColumn = tilingDeco $ maximize $ Column (1.0)
 myTwoPane = tilingDeco $ maximize $ TwoPane (3/100) (1/2)
 myTwoPaneMirrored = tilingDeco $ maximize $ Mirror $ TwoPane (3/100) (1/2)
+flexColumn =  tilingDeco $ maximize $ mouseResizableTile { draggerType=BordersDragger } 
+flexRow = tilingDeco $ maximize $ mouseResizableTileMirrored { draggerType=BordersDragger }
+singleRow = tilingDeco $ maximize $ zoomRow
+singleColumn = tilingDeco $ maximize $ Column (1.0)
 myGrid = tilingDeco $ maximize $ Grid
 
 
@@ -81,8 +81,8 @@ tilingDeco l = windowSwitcherDecorationWithImageButtons shrinkText defaultThemeW
 -- tilingDeco l = noFrillsDeco shrinkText defaultThemeWithButtons (draggingVisualizer l)
 
 -- floating = floatingDeco $ maximize $ borderResize $ positionStoreFloat
--- tiled1 = tilingDeco $ maximize $ mouseResizableTileMirrored
--- tiled2 = tilingDeco $ maximize $ mouseResizableTile
+-- flexColumn = tilingDeco $ maximize $ mouseResizableTileMirrored
+-- flexRow = tilingDeco $ maximize $ mouseResizableTile
 -- fullscreen = tilingDeco $ maximize $ smartBorders Full
 -- 
 -- tilingDeco l = windowSwitcherDecorationWithButtons shrinkText defaultThemeWithButtons (draggingVisualizer l)
