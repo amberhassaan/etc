@@ -58,12 +58,12 @@ myHandleEventHook = minimizeEventHook
 
 bluetileLayoutHook = avoidStruts $ minimize $ boringWindows $ (
     named "Fullscreen" fullscreen |||
-    named "Tiled1" flexColumn |||
-    named "Tiled2" flexRow |||
-    named "SingleRow" singleRow |||
-    named "SingleColumn" singleColumn |||
     named "MyTwoPane" myTwoPane |||
     named "MyTwoPaneMirrored" myTwoPaneMirrored |||
+    named "FlexColumn" flexColumn |||
+    named "FlexRow" flexRow |||
+    named "SingleRow" singleRow |||
+    named "SingleColumn" singleColumn |||
     named "MyGrid" myGrid
     )
 -- where
