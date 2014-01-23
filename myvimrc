@@ -80,7 +80,7 @@ set shiftwidth=3
 set expandtab
 
 " width of the lines in chars, auto inserts new-line after that
-" set textwidth=83
+set textwidth=83
 
 "wrap around without inserting new-line
 set wrap

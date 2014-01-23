@@ -250,7 +250,7 @@ export EDITOR=vim
 
 
 # using less as default pager until vim issues are figured out
-export PAGER="`whcih less`";
+export PAGER="`which less`";
 # using vim to view man pages
 export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
               vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
