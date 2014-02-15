@@ -52,6 +52,13 @@ function parse_git_branch () {
   fi
 }
 
+function get_num_jobs () {
+  local j=$( jobs | wc | awk '{print $1}');
+  if [[ "$j" -gt 0 ]] ; then 
+    echo "($j)"
+  fi
+}
+
 # PS1="$GREEN\u@machine$NO_COLOUR:\w$YELLOW\$(parse_git_branch)$NO_COLOUR\$ "
 
 endmarker='\$'
@@ -62,9 +69,9 @@ if [ "$HOME" == "/root" ]; then
 fi;
 
 
-colorfulPS1="${GREEN}[\D{%T %F}]${NOCOLOR}${USERCOLOR}[\u@\h]${NOCOLOR}${BLUE}[\w]${NOCOLOR}${YELLOW}\$(parse_git_branch)${NOCOLOR}\n$endmarker "
+colorfulPS1="${USERCOLOR}[\u@\h]${NOCOLOR}${GREEN}[\D{%T %F}]${NOCOLOR}${BLUE}[\w]${NOCOLOR}${RED}\$(get_num_jobs)${NOCOLOR}${YELLOW}\$(parse_git_branch)${NOCOLOR}\n$endmarker "
 
-nocolorPS1="[\D{%T %F}][\u@\h][\w]\$(parse_git_branch)\n$endmarker "
+nocolorPS1="[\u@\h][\D{%F %T}][\w]\$(get_num_jobs)\$(parse_git_branch)\n$endmarker "
 
 case "$TERM" in
   xterm*|rxvt|screen|linux)
