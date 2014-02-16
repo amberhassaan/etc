@@ -26,7 +26,7 @@ XTerm*vt100.translations: #override \n\
 ! XTerm*reverseVideo:   off
 XTerm*visualBell:     off
 XTerm*termName:       xterm
-XTerm*saveLines:      100000
+XTerm*saveLines:      999000
 XTerm*scrollBar:      on
 XTerm*rightScrollBar: on
 XTerm*scrollKey:      on
