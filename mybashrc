@@ -53,7 +53,7 @@ function parse_git_branch () {
     if [ "$numMod" -gt 1 ]; then 
       echo "(*$B*)";
     else 
-      echo "($B)";
+      echo "<$B>";
     fi;
   fi;
 }
