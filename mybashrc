@@ -50,7 +50,7 @@ function parse_git_branch () {
   if [ -n "$x" ] ; then
     local B=$(echo $x | cut -d ' ' -f 2 | sed 's/\.\.\./ > /');
     local numMod=$(echo $x | tr ' ' '\n' | wc -l);
-    if [ "$numMod" -gt 1 ]; then 
+    if [ "$numMod" -gt 2 ]; then 
       echo "(*$B*)";
     else 
       echo "<$B>";
