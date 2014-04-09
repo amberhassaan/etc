@@ -7,7 +7,7 @@ hardstatus string '%{= kg}[ %{g}%H %{g}][ %{= kw}%-Lw%{= bk}%50>%n%f* %t%{= kw} 
 
 startup_message off  
 
-defscrollback 999000
+defscrollback 99900
 
 ##############################################################
 # terminal settings
