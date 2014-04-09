@@ -46,18 +46,14 @@ YELLOW="\[\033[0;33m\]"
 NOCOLOR="\[\033[0;00m\]"
 
 function parse_git_branch () {
-  # local B=$(git branch 2> /dev/null | fgrep '*' | awk '{print $2}')
-  # if [ -n "$B" ] ; then 
-    # echo "<$B>"
-  # fi
-  local x=$(git status -b --porcelain 2> /dev/null | fgrep -v '??'| awk '{print $2; }');
+  local x=$(git status -b --porcelain 2> /dev/null | fgrep -v '??');
   if [ -n "$x" ] ; then
-    local B=$(echo $x | cut -d ' ' -f 1);
+    local B=$(echo $x | cut -d ' ' -f 2 | sed 's/\.\.\./ > /');
     local numMod=$(echo $x | tr ' ' '\n' | wc -l);
     if [ "$numMod" -gt 1 ]; then 
       echo "(*$B*)";
     else 
-      echo "<$B>";
+      echo "($B)";
     fi;
   fi;
 }
@@ -258,7 +254,7 @@ export MAIL=/mail/${USER}/Maildir/
 # default printer: change this to suit your needs.
 # pr3swd is the duplex queue on our black and white laser printer in the
 # southwest quadrant of the 3rd floor of ICES.
-export PRINTER=cp4104d
+export PRINTER=cp4104
 
 # default editor: this is used by svn, etc.
 # the only safe default for EDITOR is one which instructs the user how to quit.
