@@ -21,6 +21,7 @@
 
 [alias]
   graph = log --graph --all --oneline --decorate --color
+  st = status -sb
 
 [url "git://anongit.kde.org/"]
 	insteadOf = kde:

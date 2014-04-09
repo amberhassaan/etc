@@ -17,7 +17,7 @@ done;
 ###############################################################
 # source Xresources if running X session
 ###############################################################
-if [[ -n "$DISPLAY" ]]; then
+if [ -n "$DISPLAY" ]; then
   xrdb -load $HOME/.Xresources
 fi
 
@@ -46,16 +46,26 @@ YELLOW="\[\033[0;33m\]"
 NOCOLOR="\[\033[0;00m\]"
 
 function parse_git_branch () {
-  local B=$(git branch 2> /dev/null | fgrep '*' | awk '{print $2}')
-  if [[ -n "$B" ]] ; then 
-    echo "<$B>"
-  fi
+  # local B=$(git branch 2> /dev/null | fgrep '*' | awk '{print $2}')
+  # if [ -n "$B" ] ; then 
+    # echo "<$B>"
+  # fi
+  local x=$(git status -b --porcelain 2> /dev/null | fgrep -v '??'| awk '{print $2; }');
+  if [ -n "$x" ] ; then
+    local B=$(echo $x | cut -d ' ' -f 1);
+    local numMod=$(echo $x | tr ' ' '\n' | wc -l);
+    if [ "$numMod" -gt 1 ]; then 
+      echo "(*$B*)";
+    else 
+      echo "<$B>";
+    fi;
+  fi;
 }
 
 function get_num_jobs () {
-  local j=$( jobs | wc | awk '{print $1}');
-  if [[ "$j" -gt 0 ]] ; then 
-    echo "($j)"
+  local j=$(jobs | wc -l);
+  if [ "$j" -gt 0 ] ; then 
+    echo "<$j>"
   fi
 }
 
@@ -227,7 +237,7 @@ function pd() {
 
   local DIFF=$((LEN-MAX))
 
-  if [[ $DIFF -gt 0 ]]; then
+  if [ $DIFF -gt 0 ]; then
     for i in $(seq 1 $DIFF); do
       # -n supresses the change of directory, 
       # -0 removes the rightmost entry, assuming it's the oldest
@@ -273,7 +283,7 @@ export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 
 
 # customizations local to this machine may be put in the following file
-if [[ -f $HOME/etc/bash_local ]]; then
+if [ -f $HOME/etc/bash_local ]; then
    . $HOME/etc/bash_local
 fi
 
