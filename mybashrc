@@ -48,7 +48,7 @@ NOCOLOR="\[\033[0;00m\]"
 function parse_git_branch () {
   local x=$(git status -b --porcelain 2> /dev/null | fgrep -v '??');
   if [ -n "$x" ] ; then
-    local B=$(echo $x | cut -d ' ' -f 2 | sed 's/\.\.\./ > /');
+    local B=$(echo $x | cut -d ' ' -f 2);
     local numMod=$(echo $x | tr ' ' '\n' | wc -l);
     if [ "$numMod" -gt 2 ]; then 
       echo "(*$B*)";
