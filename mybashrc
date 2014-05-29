@@ -46,11 +46,11 @@ YELLOW="\[\033[0;33m\]"
 NOCOLOR="\[\033[0;00m\]"
 
 function parse_git_branch () {
-  local x=$(git status -b --porcelain 2> /dev/null | fgrep -v '??');
-  if [ -n "$x" ] ; then
-    local B=$(echo $x | cut -d ' ' -f 2);
-    local numMod=$(echo $x | tr ' ' '\n' | wc -l);
-    if [ "$numMod" -gt 2 ]; then 
+  local git_cmd="git status -b --porcelain 2> /dev/null | fgrep -v '??'";
+  if [ -n "$(eval $git_cmd)" ] ; then
+    local B=$(eval "$git_cmd" | head -n 1 | cut -d ' ' -f 2);
+    local numMod=$(eval "$git_cmd" | wc -l);
+    if [ "$numMod" -gt 1 ]; then 
       echo "(*$B*)";
     else 
       echo "<$B>";
