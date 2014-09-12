@@ -30,6 +30,8 @@ import XMonad.Layout.ZoomRow
 
 import XMonad.Actions.BluetileCommands
 import XMonad.Actions.CycleWS
+import XMonad.Actions.RotSlaves
+import XMonad.Actions.CycleWindows
 import XMonad.Actions.WindowMenu
 
 import XMonad.Hooks.CurrentWorkspaceOnTop
@@ -52,7 +54,7 @@ import Data.Monoid
 import Control.Monad(when)
 
 
-myXterm = "xterm -fa Menlo -fs 12.4"
+myXterm = "xterm -fa Menlo -fs 13"
 
 myHandleEventHook = minimizeEventHook
 
@@ -80,22 +82,21 @@ myGrid = tilingDeco $ maximize $ Grid
 tilingDeco l = windowSwitcherDecorationWithImageButtons shrinkText defaultThemeWithImageButtons (draggingVisualizer l)
 -- tilingDeco l = noFrillsDeco shrinkText defaultThemeWithButtons (draggingVisualizer l)
 
--- floating = floatingDeco $ maximize $ borderResize $ positionStoreFloat
--- flexColumn = tilingDeco $ maximize $ mouseResizableTileMirrored
--- flexRow = tilingDeco $ maximize $ mouseResizableTile
--- fullscreen = tilingDeco $ maximize $ smartBorders Full
+myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
+
+-- myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList
+--     [
+--     -- other additional keys
+--       -- ((modm, xK_s), cycleRecentWindows [xK_Alt_L] xK_s xK_d)
+--       ((mod1Mask, xK_Tab), cycleRecentWindows [xK_Alt_L] xK_Tab xK_Tab)
+--     ]
 -- 
--- tilingDeco l = windowSwitcherDecorationWithButtons shrinkText defaultThemeWithButtons (draggingVisualizer l)
--- floatingDeco l = buttonDeco shrinkText defaultThemeWithButtons l
---
-
-myWorkspaces = ["1","2","3","4","5","6","7"]
-
 baseConfig = xfceConfig
 
 myConfig = baseConfig { 
   manageHook = manageDocks <+> manageHook baseConfig,
   handleEventHook = myHandleEventHook <+> handleEventHook baseConfig,
+  -- keys = myKeys <+> keys baseConfig,
   layoutHook = bluetileLayoutHook,
   focusedBorderColor= "#00ff00",
   workspaces = myWorkspaces, 
@@ -105,14 +106,15 @@ myConfig = baseConfig {
 myKeys = 
     [
     -- other additional keys
+      ((mod1Mask, xK_Tab), cycleRecentWindows [xK_Alt_L, xK_Alt_R] xK_Tab xK_Tab)
     ]
-    ++
-    [
-      ((m .|. mod1Mask, k), windows $ f i) -- Replace 'mod1Mask' with your mod key of choice.
-      | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
-      , (f, m) <- [(W.view, 0), (W.shift,
-          shiftMask)]
-    ]
+    -- ++
+    -- [
+    --   ((m .|. mod1Mask, k), windows $ f i) -- Replace 'mod1Mask' with your mod key of choice.
+    --   | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
+    --   , (f, m) <- [(W.view, 0), (W.shift,
+    --       shiftMask)]
+    -- ]
 
 
 main = xmonad myConfig
