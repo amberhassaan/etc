@@ -56,16 +56,16 @@ screen -t sh_9  9
 # # more shells 10-19, uncomment following. and use Ctrl-a Shift N to 
 # # swith to shell 1N
 # 
-# bind  ! select 11
-# bind  @ select 12
-# bind \# select 13
-# bind  $ select 14
-# bind  % select 15
-# bind \^ select 16
-# bind  & select 17
-# bind  * select 18
-# bind  ( select 19
-# bind  ) select 10
+bind  ! select 11
+bind  @ select 12
+bind \# select 13
+bind  $ select 14
+bind  % select 15
+bind \^ select 16
+bind  & select 17
+bind  * select 18
+bind  ( select 19
+bind  ) select 10
 # 
 # screen -t sh_11  11
 # screen -t sh_12  12
