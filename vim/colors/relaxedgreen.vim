@@ -26,9 +26,9 @@ highlight Comment      term=italic       ctermfg=brown       ctermbg=black     g
 highlight Constant     term=underline    ctermfg=cyan        guifg=#0099dd    
 highlight Debug        term=bold         ctermfg=red         ctermbg=black     guifg=#dc0000 guibg=#000000
 highlight DiffAdd      term=reverse      ctermfg=black       ctermbg=cyan      guifg=#000000 guibg=#007200
-highlight DiffChange   term=underline    ctermfg=green       ctermbg=black     guifg=#000000 guibg=#006700
+highlight DiffChange   term=reverse    ctermfg=green       ctermbg=black     guifg=#000000 guibg=#006700
 highlight DiffDelete   term=standout     ctermfg=black       ctermbg=yellow    guifg=#000000 guibg=#007200
-highlight DiffText     term=bold         ctermfg=green       ctermbg=black     guifg=#00ac00 guibg=#000000
+highlight DiffText     term=bold         ctermfg=black       ctermbg=yellow     guifg=#00ac00 guibg=#000000
 highlight Directory    term=underline    ctermfg=green       ctermbg=black     guifg=#336633 guibg=#000000
 highlight Error        term=reverse,bold ctermfg=black       ctermbg=red       guifg=#000000 guibg=#dc0000
 highlight ErrorMsg     term=reverse,bold ctermfg=white       ctermbg=red       guifg=#ffffff guibg=#dc0000
