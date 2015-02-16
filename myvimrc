@@ -15,6 +15,11 @@ endif
 
 source $VIMRUNTIME/vimrc_example.vim
 
+
+" load plugins
+execute pathogen#infect()
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""" terminal related settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -48,6 +53,7 @@ let $PAGER=''
 
 
 " filetype setting read by many below
+syntax on
 filetype on
 filetype indent on
 
