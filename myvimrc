@@ -17,6 +17,7 @@ source $VIMRUNTIME/vimrc_example.vim
 
 
 " load plugins
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 
