@@ -215,8 +215,10 @@ vnoremap <silent> # y?\V<C-R>=escape(@",'\/')<CR>?<CR>
 """""""""""""" Insert mode mappings 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" disabling in favor of plugin supertab
+
 " uses the CleverTab() function below
-inoremap <Tab> <C-R>=CleverTab()<CR>
+" inoremap <Tab> <C-R>=CleverTab()<CR>
 
 " Taken from ':help ins-completion'
 " modified by amber
@@ -226,17 +228,17 @@ inoremap <Tab> <C-R>=CleverTab()<CR>
 " <Tab>; since a user has to start typing a word to complete it. Having typed
 " no character, the completion would suggest garbage only.
 
-function! CleverTab()
-    " getline . gets the current line
-    " col(.)-2 is the index of the character behind the cursor
-    let c = getline(".")[ col(".") - 2]
-   if c =~ '\w'
-      " look for previous instances
-      return "\<C-P>"
-   else
-      return "\<Tab>"
-    endif
-endfunction
+" function! CleverTab()
+    " " getline . gets the current line
+    " " col(.)-2 is the index of the character behind the cursor
+    " let c = getline(".")[ col(".") - 2]
+   " if c =~ '\w'
+      " " look for previous instances
+      " return "\<C-P>"
+   " else
+      " return "\<Tab>"
+    " endif
+" endfunction
 
 
 
