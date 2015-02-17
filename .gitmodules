@@ -31,3 +31,18 @@
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "vim/bundle/SearchComplete"]
+	path = vim/bundle/SearchComplete
+	url = https://github.com/vim-scripts/SearchComplete.git
+[submodule "vim/bundle/incsearch"]
+	path = vim/bundle/incsearch
+	url = https://github.com/vim-scripts/incsearch.vim.git
+[submodule "vim/bundle/clang_complete"]
+	path = vim/bundle/clang_complete
+	url = https://github.com/Rip-Rip/clang_complete.git
+[submodule "vim/bundle/vim-clang"]
+	path = vim/bundle/vim-clang
+	url = https://github.com/justmao945/vim-clang.git
+[submodule "vim/bundle/repeat"]
+	path = vim/bundle/repeat
+	url = https://github.com/tpope/vim-repeat.git
