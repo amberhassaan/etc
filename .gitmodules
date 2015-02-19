@@ -40,9 +40,6 @@
 [submodule "vim/bundle/clang_complete"]
 	path = vim/bundle/clang_complete
 	url = https://github.com/Rip-Rip/clang_complete.git
-[submodule "vim/bundle/vim-clang"]
-	path = vim/bundle/vim-clang
-	url = https://github.com/justmao945/vim-clang.git
 [submodule "vim/bundle/repeat"]
 	path = vim/bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
