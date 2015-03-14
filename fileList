@@ -7,6 +7,7 @@
 #File-name-in-etc Path-name-relative-to-$HOME   
 bashrc            .bashrc                       
 # color-schemes     .kde4/share/apps/color-schemes
+ctags             .ctags
 fonts.conf        .fonts.conf                   
 fonts             .fonts                        
 gdbinit           .gdbinit
