@@ -55,3 +55,6 @@
 [submodule "vim/bundle/clang"]
 	path = vim/bundle/clang
 	url = https://github.com/justmao945/vim-clang.git
+[submodule "vim/bundle/autotag"]
+	path = vim/bundle/autotag
+	url = https://github.com/craigemery/vim-autotag.git
