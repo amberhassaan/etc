@@ -54,9 +54,12 @@ let $PAGER=''
 
 
 " filetype setting read by many below
+set nocp
 syntax on
 filetype on
 filetype indent on
+filetype plugin on
+
 
 " send all backup files to one directory ~/.backup
 set backupdir=~/.backup
@@ -152,21 +155,30 @@ endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""" settings for SuperTab and Clang complete
+""""""""""""" settings for SuperTab, Completion & Tags etc. 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set omnifunc=syntaxcomplete#Complete
+set completeopt=menuone
+" search for tags file in current directory and upwards
+set tags=./tags;/
+
 " SuperTab option for context aware completion
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = 'context'
+  autocmd FileType *
+      \ if &omnifunc != '' |
+      \   call SuperTabChain(&omnifunc, "<c-p>") |
+      \ endif
    
 
 " vim-clang options
+" let g:clang_c_options = '-std=c11'
+" let g:clang_cpp_options = '-std=c++11'
+" 
+" " disable preview window
+" let g:clang_cpp_completeopt = 'longest,menuone'
 
-let g:clang_c_options = '-std=c11'
-let g:clang_cpp_options = '-std=c++11'
-
-" disable preview window
-let g:clang_cpp_completeopt = 'longest,menuone'
-
+" clang_complete options
 " Disable auto popup, use <Tab> to autocomplete
 " let g:clang_complete_auto = 0
 " Show clang errors in the quickfix window
