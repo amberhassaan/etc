@@ -55,3 +55,6 @@
 [submodule "vim/bundle/autotag"]
 	path = vim/bundle/autotag
 	url = https://github.com/craigemery/vim-autotag.git
+[submodule "vim/bundle/kolor"]
+	path = vim/bundle/kolor
+	url = https://github.com/zeis/vim-kolor
