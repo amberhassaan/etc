@@ -35,14 +35,7 @@ endif
 
 " load the color scheme now
 " colorscheme grayOnBlack
-" colorscheme relaxedgreen
-
-" vim-kolor
-let g:kolor_italic=1                    " Enable italic. Default: 1
-let g:kolor_bold=1                      " Enable bold. Default: 1
-let g:kolor_underlined=1                " Enable underline. Default: 0
-let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
-colorscheme kolor
+colorscheme relaxedgreen
 
 " enable mouse for 'a'll modes, but avoid using mouse too much
 " after this setting, hold shift (+ middle click) when pasting text from other applications
