@@ -55,12 +55,6 @@
 [submodule "vim/bundle/autotag"]
 	path = vim/bundle/autotag
 	url = https://github.com/craigemery/vim-autotag.git
-[submodule "vim/bundle/kolor"]
-	path = vim/bundle/kolor
-	url = https://github.com/zeis/vim-kolor
-[submodule "vim/bundle/leo256"]
-	path = vim/bundle/leo256
-	url = https://github.com/vim-scripts/leo256.git
 [submodule "tomorrow-theme"]
 	path = tomorrow-theme
 	url = https://github.com/chriskempson/tomorrow-theme.git
