@@ -25,8 +25,9 @@ execute pathogen#infect()
 """""""""""""" terminal related settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " background : light|dark
-set background=light
+set background=dark
 
+set t_Co=256
 if &term =~ "xterm"
   " set number of terminal colors
   " 16 is standard, but more are available
@@ -94,8 +95,8 @@ set expandtab
 " width of the lines in chars, auto inserts new-line after that
 set textwidth=83
 
-"wrap around without inserting new-line
-set wrap
+"do no wrap around without inserting new-line
+set nowrap
 
 
 
