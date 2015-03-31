@@ -17,7 +17,7 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
-let g:colors_name = "relaxedgreen"
+let g:colors_name = "relaxedgreen-mod"
 highlight Cursor       term=reverse      ctermfg=green       ctermbg=blue      guifg=#000000 guibg=#559955
 highlight CursorIM     term=reverse      ctermfg=black       ctermbg=green     guifg=#000000 guibg=#336633
 highlight CursorColumn term=none         ctermbg=darkred     guibg=#663333    

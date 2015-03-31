@@ -58,3 +58,6 @@
 [submodule "tomorrow-theme"]
 	path = tomorrow-theme
 	url = https://github.com/chriskempson/tomorrow-theme.git
+[submodule "vim/bundle/Relaxed-Green"]
+	path = vim/bundle/Relaxed-Green
+	url = https://github.com/vim-scripts/Relaxed-Green
