@@ -24,10 +24,10 @@ defbce on
 vbell off
 
 # change the name of the terminal; default is 'screen'
-term 'xterm'
+term "screen-256color"
 
 # a hack for the mouse
-terminfo xterm*|rxvt|screen ti@:te@
+terminfo xterm*|rxvt*|screen* ti@:te@
 
 # Ctrl-Tab
 bindkey "^[[27;5;9~" next

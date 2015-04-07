@@ -21,6 +21,10 @@ if [ -n "$DISPLAY" ]; then
   xrdb -load $HOME/.Xresources
 fi
 
+if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
+  export TERM="xterm-256color"
+fi;
+
 
 
 ###############################################################
@@ -80,7 +84,7 @@ colorfulPS1="${USERCOLOR}[\u@\h]${NOCOLOR}${GREEN}[\D{%T %F}]${NOCOLOR}${BLUE}[\
 nocolorPS1="[\u@\h][\D{%F %T}][\w]\$(get_num_jobs)\$(parse_git_branch)\n$endmarker "
 
 case "$TERM" in
-  xterm*|rxvt|screen|linux)
+  xterm*|rxvt*|screen*|linux*)
     # default user color is purple
     PS1=$colorfulPS1
     ;;
