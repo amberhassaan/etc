@@ -97,3 +97,6 @@
 [submodule "vim/bundle/cpp-enhanced-highlight"]
 	path = vim/bundle/cpp-enhanced-highlight
 	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim

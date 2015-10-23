@@ -1,0 +1,11 @@
+# Basic options
+--recurse=yes
+--tag-relative=yes
+--exclude=.git
+
+# C++
+--c++-kinds=+p --fields=+iSat --extra=+fq
+
+
+# PHP
+--langmap=php:.engine.inc.module.theme.install.php --PHP-kinds=+cf-v
