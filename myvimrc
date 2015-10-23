@@ -37,6 +37,8 @@ endif
 " load the color scheme now
 " colorscheme grayOnBlack
 " colorscheme relaxedgreen
+colorscheme molokai
+" colorscheme Tomorrow-Night-Eighties
 
 
 " enable mouse for 'a'll modes, but avoid using mouse too much
@@ -100,10 +102,6 @@ set expandtab
 set wrap
 
 
-
-
-
-
 """""""""""""""""""""""""""""""
 " search related
 """""""""""""""""""""""""""""""
@@ -114,6 +112,11 @@ set hls
 " incremental search
 set incsearch
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" Settings for C++ enhanced highlighting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""

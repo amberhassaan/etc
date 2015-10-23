@@ -63,7 +63,7 @@ function parse_git_branch () {
 }
 
 function get_num_jobs () {
-  local j=$(jobs | wc -l);
+  local j=$(jobs | grep '\[[0-9]\+\]' | wc -l);
   if [ "$j" -gt 0 ] ; then 
     echo "<$j>"
   fi
