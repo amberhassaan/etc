@@ -54,7 +54,7 @@ import Data.Monoid
 import Control.Monad(when)
 
 
-myXterm = "xterm -fa Menlo -fs 13"
+myXterm = "xterm -fa 'Fantasque Sans Mono' -fs 13.3"
 
 myHandleEventHook = minimizeEventHook
 
