@@ -37,12 +37,6 @@
 [submodule "vim/bundle/incsearch"]
 	path = vim/bundle/incsearch
 	url = https://github.com/vim-scripts/incsearch.vim.git
-[submodule "vim/bundle/clang_complete"]
-	path = vim/bundle/clang_complete
-	url = https://github.com/Rip-Rip/clang_complete.git
-[submodule "vim/bundle/vim-clang"]
-	path = vim/bundle/vim-clang
-	url = https://github.com/justmao945/vim-clang.git
 [submodule "vim/bundle/repeat"]
 	path = vim/bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
@@ -58,3 +52,15 @@
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vim/bundle/autotag"]
+	path = vim/bundle/autotag
+	url = https://github.com/craigemery/vim-autotag.git
+[submodule "vim/bundle/kolor"]
+	path = vim/bundle/kolor
+	url = https://github.com/zeis/vim-kolor
+[submodule "vim/bundle/leo256"]
+	path = vim/bundle/leo256
+	url = https://github.com/vim-scripts/leo256.git
+[submodule "tomorrow-theme"]
+	path = tomorrow-theme
+	url = https://github.com/chriskempson/tomorrow-theme.git
