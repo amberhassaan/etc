@@ -1,0 +1,21 @@
+# rsync to WIL/hbk
+-u update dst only if src newer
+-r recursive
+-l copy symlinks as symlinks
+-t preserve times
+rsync -ruqt source dest
+rsync -rul source dest
+
+# backup home. 
+# first cd to the external hard-drive linux partition(ext3) and
+# then execute
+rdiff-backup ~amber/ linuxHome/
+
+# gpg key import keys to solve NO_PUBKEY error
+gpg --keyserver pgp.mit.edu --recv-keys KEY_ID
+gpg --armor --export KEY_ID | apt-key add -
+# OR
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 02D65EFF
+
+# sort deb packages installed by size
+dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
