@@ -19,9 +19,9 @@
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule "vim/bundle/easymotion"]
-	path = vim/bundle/easymotion
-	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule "vim/bundle/molokai"]
+	path = vim/bundle/molokai
+	url = https://github.com/tomasr/molokai.git
 [submodule "vim/bundle/autotag"]
 	path = vim/bundle/autotag
 	url = https://github.com/craigemery/vim-autotag.git
