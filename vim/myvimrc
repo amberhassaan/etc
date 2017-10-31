@@ -37,7 +37,7 @@ endif
 " load the color scheme now
 " colorscheme grayOnBlack
 " colorscheme relaxedgreen
-colorscheme molokai
+colorscheme molokaiMod
 " colorscheme Tomorrow-Night-Eighties
 
 
