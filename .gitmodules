@@ -52,9 +52,6 @@
 [submodule "vim/bundle/autotag"]
 	path = vim/bundle/autotag
 	url = https://github.com/craigemery/vim-autotag.git
-[submodule "tomorrow-theme"]
-	path = tomorrow-theme
-	url = https://github.com/chriskempson/tomorrow-theme.git
 [submodule "vim/bundle/Relaxed-Green"]
 	path = vim/bundle/Relaxed-Green
 	url = https://github.com/vim-scripts/Relaxed-Green
@@ -100,6 +97,3 @@
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim
-[submodule "zsh/powerlevel9k"]
-	path = zsh/powerlevel9k
-	url = https://github.com/bhilburn/powerlevel9k.git

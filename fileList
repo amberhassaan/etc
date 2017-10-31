@@ -20,4 +20,5 @@ vim               .vim
 xinitrc           .xinitrc
 Xresources        .Xresources                   
 xmonad            .xmonad
+oh-my-zsh         .oh-my-zsh
 zshrc             .zshrc
