@@ -6,6 +6,6 @@
 # * ssh login sessions
 
 # git over ssh doesn't like anything being printed to stdout, so redirecting stdout to stderr
-. $HOME/etc/mybashrc 1>&2 
+. $HOME/etc/bash/mybashrc 1>&2 
 
 # . /etc/profile
