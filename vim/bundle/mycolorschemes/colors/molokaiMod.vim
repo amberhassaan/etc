@@ -56,7 +56,7 @@ hi Ignore          guifg=#808080 guibg=bg
 hi IncSearch       guifg=#C4BE89 guibg=#000000
 
 hi Keyword         guifg=#F92672               gui=bold
-hi Label           guifg=#E6DB74               gui=none
+hi Label           guifg=#E6DB74               gui=NONE
 hi Macro           guifg=#C4BE89               gui=italic
 hi SpecialKey      guifg=#66D9EF               gui=italic
 
@@ -97,7 +97,7 @@ hi Title           guifg=#ef5939
 hi Todo            guifg=#FFFFFF guibg=bg      gui=bold
 
 hi Typedef         guifg=#66D9EF
-hi Type            guifg=#66D9EF               gui=none
+hi Type            guifg=#66D9EF               gui=NONE
 hi Underlined      guifg=#808080               gui=underline
 
 hi VertSplit       guifg=#808080 guibg=#080808 gui=bold
@@ -107,23 +107,23 @@ hi WarningMsg      guifg=#FFFFFF guibg=#333333 gui=bold
 hi WildMenu        guifg=#66D9EF guibg=#000000
 
 hi TabLineFill     guifg=#1B1D1E guibg=#1B1D1E
-hi TabLine         guibg=#1B1D1E guifg=#808080 gui=none
+hi TabLine         guibg=#1B1D1E guifg=#808080 gui=NONE
 
 if s:molokai_original == 1
-   hi Normal          guifg=#F8F8F2 guibg=none
+   hi Normal          guifg=#F8F8F2 guibg=NONE
    hi Comment         guifg=#75715E
    hi CursorLine                    guibg=#3E3D32
-   hi CursorLineNr    guifg=#FD971F               gui=none
+   hi CursorLineNr    guifg=#FD971F               gui=NONE
    hi CursorColumn                  guibg=#3E3D32
    hi ColorColumn                   guibg=#3B3A32
    hi LineNr          guifg=#BCBCBC guibg=#3B3A32
    hi NonText         guifg=#75715E
    hi SpecialKey      guifg=#75715E
 else
-   hi Normal          guifg=#F8F8F2 guibg=none
+   hi Normal          guifg=#F8F8F2 guibg=NONE
    hi Comment         guifg=#7E8E91
    hi CursorLine                    guibg=#293739
-   hi CursorLineNr    guifg=#FD971F               gui=none
+   hi CursorLineNr    guifg=#FD971F               gui=NONE
    hi CursorColumn                  guibg=#293739
    hi ColorColumn                   guibg=#232526
    hi LineNr          guifg=#465457 guibg=#232526
@@ -136,13 +136,13 @@ end
 "
 if &t_Co > 255
    if s:molokai_original == 1
-      hi Normal                   ctermbg=none
-      hi CursorLine               ctermbg=235   cterm=none
-      hi CursorLineNr ctermfg=208               cterm=none
+      hi Normal                   ctermbg=NONE
+      hi CursorLine               ctermbg=235   cterm=NONE
+      hi CursorLineNr ctermfg=208               cterm=NONE
    else
-      hi Normal       ctermfg=252 ctermbg=none
-      hi CursorLine               ctermbg=234   cterm=none
-      hi CursorLineNr ctermfg=208               cterm=none
+      hi Normal       ctermfg=252 ctermbg=NONE
+      hi CursorLine               ctermbg=234   cterm=NONE
+      hi CursorLineNr ctermfg=208               cterm=NONE
    endif
    hi Boolean         ctermfg=135
    hi Character       ctermfg=144
@@ -168,12 +168,12 @@ if &t_Co > 255
    hi FoldColumn      ctermfg=67  ctermbg=16
    hi Folded          ctermfg=67  ctermbg=16
    hi Function        ctermfg=118
-   hi Identifier      ctermfg=208               cterm=none
+   hi Identifier      ctermfg=208               cterm=NONE
    hi Ignore          ctermfg=244 ctermbg=232
    hi IncSearch       ctermfg=193 ctermbg=16
 
    hi keyword         ctermfg=161               cterm=bold
-   hi Label           ctermfg=229               cterm=none
+   hi Label           ctermfg=229               cterm=NONE
    hi Macro           ctermfg=193
    hi SpecialKey      ctermfg=81
 
@@ -203,7 +203,7 @@ if &t_Co > 255
        hi SpellBad                ctermbg=52
        hi SpellCap                ctermbg=17
        hi SpellLocal              ctermbg=17
-       hi SpellRare  ctermfg=none ctermbg=none  cterm=reverse
+       hi SpellRare  ctermfg=NONE ctermbg=NONE  cterm=reverse
    endif
    hi Statement       ctermfg=161               cterm=bold
    hi StatusLine      ctermfg=238 ctermbg=253
@@ -215,7 +215,7 @@ if &t_Co > 255
    hi Todo            ctermfg=231 ctermbg=232   cterm=bold
 
    hi Typedef         ctermfg=magenta
-   hi Type            ctermfg=blue                cterm=none
+   hi Type            ctermfg=blue                cterm=NONE
    hi Underlined      ctermfg=244               cterm=underline
 
    hi VertSplit       ctermfg=244 ctermbg=232   cterm=bold
@@ -233,9 +233,9 @@ if &t_Co > 255
    hi SpecialKey      ctermfg=59
 
    if exists("g:rehash256") && g:rehash256 == 1
-       hi Normal       ctermfg=252 ctermbg=none
-       hi CursorLine               ctermbg=236   cterm=none
-       hi CursorLineNr ctermfg=208               cterm=none
+       hi Normal       ctermfg=252 ctermbg=NONE
+       hi CursorLine               ctermbg=236   cterm=NONE
+       hi CursorLineNr ctermfg=208               cterm=NONE
 
        hi Boolean         ctermfg=141
        hi Character       ctermfg=222
