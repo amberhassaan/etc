@@ -1,27 +1,15 @@
 [submodule "vim/bundle/MultipleSearch"]
 	path = vim/bundle/MultipleSearch
 	url = https://github.com/vim-scripts/MultipleSearch.git
-[submodule "vim/bundle/Conque-Shell"]
-	path = vim/bundle/Conque-Shell
-	url = https://github.com/vim-scripts/Conque-Shell.git
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/nerdtree-tabs"]
-	path = vim/bundle/nerdtree-tabs
-	url = https://github.com/jistr/vim-nerdtree-tabs.git
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
 [submodule "vim/bundle/undotree"]
 	path = vim/bundle/undotree
 	url = https://github.com/mbbill/undotree.git
-[submodule "vim/bundle/surround"]
-	path = vim/bundle/surround
-	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
@@ -31,75 +19,21 @@
 [submodule "vim/bundle/supertab"]
 	path = vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule "vim/bundle/SearchComplete"]
-	path = vim/bundle/SearchComplete
-	url = https://github.com/vim-scripts/SearchComplete.git
-[submodule "vim/bundle/incsearch"]
-	path = vim/bundle/incsearch
-	url = https://github.com/vim-scripts/incsearch.vim.git
-[submodule "vim/bundle/repeat"]
-	path = vim/bundle/repeat
-	url = https://github.com/tpope/vim-repeat.git
-[submodule "vim/bundle/R-plugin"]
-	path = vim/bundle/R-plugin
-	url = https://github.com/vim-scripts/Vim-R-plugin
 [submodule "vim/bundle/easymotion"]
 	path = vim/bundle/easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
-[submodule "vim/bundle/bufexplorer"]
-	path = vim/bundle/bufexplorer
-	url = https://github.com/jlanzarotta/bufexplorer.git
 [submodule "vim/bundle/autotag"]
 	path = vim/bundle/autotag
 	url = https://github.com/craigemery/vim-autotag.git
-[submodule "vim/bundle/Relaxed-Green"]
-	path = vim/bundle/Relaxed-Green
-	url = https://github.com/vim-scripts/Relaxed-Green
-[submodule "vim/bundle/solarized"]
-	path = vim/bundle/solarized
-	url = https://github.com/altercation/vim-colors-solarized
-[submodule "vim/bundle/seoul256"]
-	path = vim/bundle/seoul256
-	url = https://github.com/junegunn/seoul256.vim
-[submodule "vim/bundle/kolor"]
-	path = vim/bundle/kolor
-	url = https://github.com/zeis/vim-kolor
-[submodule "vim/bundle/gruvbox"]
-	path = vim/bundle/gruvbox
-	url = https://github.com/morhetz/gruvbox
-[submodule "vim/bundle/xoria256"]
-	path = vim/bundle/xoria256
-	url = https://github.com/vim-scripts/xoria256.vim
-[submodule "vim/bundle/molokai"]
-	path = vim/bundle/molokai
-	url = https://github.com/tomasr/molokai
-[submodule "vim/bundle/desert-warm-256"]
-	path = vim/bundle/desert-warm-256
-	url = https://github.com/rainux/vim-desert-warm-256
-[submodule "vim/bundle/grb256"]
-	path = vim/bundle/grb256
-	url = https://github.com/quanganhdo/grb256
-[submodule "vim/bundle/vividchalk"]
-	path = vim/bundle/vividchalk
-	url = https://github.com/tpope/vim-vividchalk
-[submodule "vim/bundle/wombat256"]
-	path = vim/bundle/wombat256
-	url = https://github.com/vim-scripts/wombat256.vim
-[submodule "vim/bundle/jellybeans"]
-	path = vim/bundle/jellybeans
-	url = https://github.com/nanotech/jellybeans.vim
-[submodule "vim/bundle/Zenburn"]
-	path = vim/bundle/Zenburn
-	url = https://github.com/jnurmine/Zenburn
 [submodule "vim/bundle/cpp-enhanced-highlight"]
 	path = vim/bundle/cpp-enhanced-highlight
 	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
-[submodule "vim/bundle/ctrlp"]
-	path = vim/bundle/ctrlp
-	url = https://github.com/kien/ctrlp.vim
 [submodule "zsh/oh-my-zsh"]
 	path = zsh/oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
 [submodule "zsh/powerlevel9k"]
 	path = zsh/powerlevel9k
 	url = https://github.com/bhilburn/powerlevel9k.git
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
