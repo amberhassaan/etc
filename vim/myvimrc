@@ -70,7 +70,7 @@ set backupdir=~/.backup//,.,/tmp//
 " for .un~ files
 set undodir=~/.backup//,.,/tmp//
 " for .swp files
-set directory=~/.backup//,.,/tmp//
+" set directory=~/.backup//,.,/tmp//
 
 
 " present a menu when completing : commands, you can also try Ctrl-D after :
