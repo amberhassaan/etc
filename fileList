@@ -5,19 +5,20 @@
 # each non-comment line contains two paths relative to $HOME
 
 #File-name-in-etc Path-name-relative-to-$HOME   
-bashrc            .bashrc                       
+bash/bashrc            .bashrc                       
+bash/profile           .profile                      
+bash/inputrc           .inputrc                      
 # color-schemes     .kde4/share/apps/color-schemes
 ctags             .ctags
-fonts.conf        .fonts.conf                   
+fonts/fonts.conf        .fonts.conf                   
 fonts             .fonts                        
-gdbinit           .gdbinit
+gdb/gdbinit           .gdbinit
 gitconfig         .gitconfig
-inputrc           .inputrc                      
-profile           .profile                      
 screenrc          .screenrc                     
-vimrc             .vimrc                        
 vim               .vim                          
-xinitrc           .xinitrc
-Xresources        .Xresources                   
+vim/vimrc         .vimrc                        
+X/xinitrc           .xinitrc
+X/Xresources        .Xresources                   
 xmonad            .xmonad
-zshrc             .zshrc
+zsh/oh-my-zsh         .oh-my-zsh
+zsh/zshrc             .zshrc

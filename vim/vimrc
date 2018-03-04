@@ -1,0 +1,2 @@
+source $HOME/etc/vim/myvimrc
+source $HOME/etc/vim/vim_local.vim

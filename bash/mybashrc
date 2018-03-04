@@ -40,13 +40,14 @@ fi;
 # 00m is the default color, black on white and gray on black
 # e.g. 1 = red, 2=green, 4=blue
 # below we have user and host in purple, working directory in blue and rest in black
+# using light versions of colors for readability. They all start with \e[9xm
 
-RED="\[\033[0;31m\]"
-GREEN="\[\033[0;32m\]"
-BLUE="\[\033[0;34m\]"
-MAGENTA="\[\033[0;35m\]"
-CYAN="\[\033[0;36m\]"
-YELLOW="\[\033[0;33m\]"
+RED="\[\033[0;91m\]"
+GREEN="\[\033[0;92m\]"
+BLUE="\[\033[0;94m\]"
+MAGENTA="\[\033[0;95m\]"
+CYAN="\[\033[0;96m\]"
+YELLOW="\[\033[0;93m\]"
 NOCOLOR="\[\033[0;00m\]"
 
 function parse_git_branch () {
@@ -283,8 +284,8 @@ export MANPAGER="/bin/sh -c \"unset MANPAGER;col -b -x | \
 
 
 # customizations local to this machine may be put in the following file
-if [ -f $HOME/etc/bash_local ]; then
-   . $HOME/etc/bash_local
+if [ -f $HOME/etc/bash/bash_local ]; then
+   . $HOME/etc/bash/bash_local
 fi
 
 

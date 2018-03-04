@@ -37,7 +37,7 @@ endif
 " load the color scheme now
 " colorscheme grayOnBlack
 " colorscheme relaxedgreen
-colorscheme molokai
+colorscheme molokaiMod
 " colorscheme Tomorrow-Night-Eighties
 
 
@@ -66,7 +66,11 @@ filetype plugin on
 
 
 " send all backup files to one directory ~/.backup
-set backupdir=~/.backup
+set backupdir=~/.backup//,.,/tmp//
+" for .un~ files
+set undodir=~/.backup//,.,/tmp//
+" for .swp files
+" set directory=~/.backup//,.,/tmp//
 
 
 " present a menu when completing : commands, you can also try Ctrl-D after :
