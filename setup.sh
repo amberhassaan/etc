@@ -5,6 +5,9 @@
 
 # execute when inside the directory containing the actual files
 
+git submodule init --recursive
+git submodule update --recursive
+
 BASE=$PWD
 
 # sed removes the lines containing '#' assuming a comment
@@ -55,6 +58,8 @@ VIM_BAKDIR="$HOME/.backup"
 # make a .backup dir for storing vim backups
 mkdir $VIM_BAKDIR
 
+# zsh powerlevel9k theme
+ln -s zsh/powerlevel9k/ zsh/oh-my-zsh/themes/powerlevel9k
 
 # update font cache
 fc-cache 
