@@ -5,7 +5,7 @@
 
 # execute when inside the directory containing the actual files
 
-git submodule init --recursive
+git submodule init 
 git submodule update --recursive
 
 BASE=$PWD
