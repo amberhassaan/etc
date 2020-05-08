@@ -39,6 +39,8 @@ bindkey "^[[27;6;9~" prev
 # terminal shells
 ##############################################################
 
+shell "/usr/bin/zsh"
+
 # Default screens. use Ctrl-a N to switch to shell N
 screen -t sh_0  0
 screen -t sh_1  1
