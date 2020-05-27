@@ -15,6 +15,7 @@ fonts             .fonts
 gdb/gdbinit           .gdbinit
 gitconfig         .gitconfig
 screenrc          .screenrc                     
+tmux.conf          .tmux.conf                     
 vim               .vim                          
 vim/vimrc         .vimrc                        
 X/xinitrc           .xinitrc
