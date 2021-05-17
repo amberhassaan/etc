@@ -8,6 +8,9 @@
 # /boot/efi was on /dev/sda3 during installation
 UUID=0C99-6DAA  /boot/efi       vfat    defaults        0       1
 
+# for ssds enable fstrim. E.g. for systemd, you do
+# systemctl enable fstrim.timer
+
 
 # Use 'blkid' to print the universally unique identifier for a
 # device; this may be used with UUID= as a more robust way to name devices

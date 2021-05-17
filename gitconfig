@@ -18,6 +18,7 @@
 
 [push]
 	default = tracking
+	recurseSubmodules = check
 
 [alias]
   graph = log --graph --all --oneline --decorate --color
@@ -31,3 +32,9 @@
 [color]
 	ui = true
 [format]
+[url "ssh://git@github.com/KatanaGraph"]
+	insteadOf = https://github.com/KatanaGraph
+[fetch]
+	recurseSubmodules = on-demand
+[submodule]
+	recurse = true
