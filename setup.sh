@@ -57,8 +57,8 @@ VIM_BAKDIR="$HOME/.backup"
 # make a .backup dir for storing vim backups
 mkdir $VIM_BAKDIR
 
-# zsh powerlevel9k theme
-ln -s zsh/powerlevel9k/ zsh/oh-my-zsh/themes/powerlevel9k
+# zsh powerlevel10k theme
+ln -s zsh/powerlevel10k/ zsh/oh-my-zsh/themes/powerlevel10k
 
 # update font cache
 fc-cache 
