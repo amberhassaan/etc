@@ -281,6 +281,7 @@ export MANPAGER="/bin/sh -c \"unset MANPAGER;col -b -x | \
 #    . /etc/bash/prompt
 #fi
 
+export PATH="$PATH:$HOME/root/usr/bin"
 
 
 # customizations local to this machine may be put in the following file
