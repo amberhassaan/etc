@@ -53,36 +53,60 @@ import System.Exit
 import Data.Monoid
 import Control.Monad(when)
 
+-- myConfig = kdeConfig
+myConfig = xfceConfig
 
-myXterm = "xterm -fa 'Fantasque Sans Mono' -fs 13.3"
+main = xmonad myConfig
+    { modMask = mod1Mask -- use the TAB button as mod
+    , manageHook = manageHook myConfig <+> myManageHook
+    , terminal = myXterm
+    , focusedBorderColor= "#00ff00"
 
-myHandleEventHook = minimizeEventHook
+    }
 
-bluetileLayoutHook = avoidStruts $ minimize $ boringWindows $ (
-    named "Fullscreen" fullscreen |||
-    named "MyTwoPane" myTwoPane |||
-    named "MyTwoPaneMirrored" myTwoPaneMirrored |||
-    named "FlexColumn" flexColumn |||
-    named "FlexRow" flexRow |||
-    named "SingleRow" singleRow |||
-    named "SingleColumn" singleColumn |||
-    named "MyGrid" myGrid
-    )
+myManageHook = composeAll . concat $
+    [ [ className   =? c --> doFloat           | c <- myFloats]
+    , [ title       =? t --> doFloat           | t <- myOtherFloats]
+    , [ className   =? c --> doF (W.shift "2") | c <- webApps]
+    , [ className   =? c --> doF (W.shift "3") | c <- ircApps]
+    ]
+  where myFloats      = ["MPlayer", "Gimp", "yakuake", "systemsettings", "plasmashell", "Plasma", 
+                         "krunner", "Kmix", "Klipper", "Plasmoidviewer", "zoom", 
+                          "wrapper-2.0", "xfce", "xfrun4"]
+        myOtherFloats = ["alsamixer", "plasma-desktop", "win7"]
+        webApps       = ["Firefox-bin", "Opera"] -- open on desktop 2
+        ircApps       = ["Ksirc"]                -- open on desktop 3
+
+-- myXterm = "xterm -fa 'Fantasque Sans Mono' -fs 13.3"
+myXterm = "konsole"
+
+-- myHandleEventHook = minimizeEventHook
+
+-- bluetileLayoutHook = avoidStruts $ minimize $ boringWindows $ (
+--     named "Fullscreen" fullscreen |||
+--     named "MyTwoPane" myTwoPane |||
+--     named "MyTwoPaneMirrored" myTwoPaneMirrored |||
+--     named "FlexColumn" flexColumn |||
+--     named "FlexRow" flexRow |||
+--     named "SingleRow" singleRow |||
+--     named "SingleColumn" singleColumn |||
+--     named "MyGrid" myGrid
+--     )
 -- where
-fullscreen =  maximize $ resizeVerticalBottom (-4) (noBorders  Full)
-myTwoPane = tilingDeco $ maximize $ TwoPane (3/100) (1/2)
-myTwoPaneMirrored = tilingDeco $ maximize $ Mirror $ TwoPane (3/100) (1/2)
-flexColumn =  tilingDeco $ maximize $ mouseResizableTile { draggerType=BordersDragger } 
-flexRow = tilingDeco $ maximize $ mouseResizableTileMirrored { draggerType=BordersDragger }
-singleRow = tilingDeco $ maximize $ zoomRow
-singleColumn = tilingDeco $ maximize $ Column (1.0)
-myGrid = tilingDeco $ maximize $ Grid
+-- fullscreen =  maximize $ resizeVerticalBottom (-4) (noBorders  Full)
+-- myTwoPane = tilingDeco $ maximize $ TwoPane (3/100) (1/2)
+-- myTwoPaneMirrored = tilingDeco $ maximize $ Mirror $ TwoPane (3/100) (1/2)
+-- flexColumn =  tilingDeco $ maximize $ mouseResizableTile { draggerType=BordersDragger } 
+-- flexRow = tilingDeco $ maximize $ mouseResizableTileMirrored { draggerType=BordersDragger }
+-- singleRow = tilingDeco $ maximize $ zoomRow
+-- singleColumn = tilingDeco $ maximize $ Column (1.0)
+-- myGrid = tilingDeco $ maximize $ Grid
 
 
-tilingDeco l = windowSwitcherDecorationWithImageButtons shrinkText defaultThemeWithImageButtons (draggingVisualizer l)
+-- tilingDeco l = windowSwitcherDecorationWithImageButtons shrinkText defaultThemeWithImageButtons (draggingVisualizer l)
 -- tilingDeco l = noFrillsDeco shrinkText defaultThemeWithButtons (draggingVisualizer l)
 
-myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
+-- myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 
 -- myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList
 --     [
@@ -91,23 +115,26 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 --       ((mod1Mask, xK_Tab), cycleRecentWindows [xK_Alt_L] xK_Tab xK_Tab)
 --     ]
 -- 
-baseConfig = xfceConfig
 
-myConfig = baseConfig { 
-  manageHook = manageDocks <+> manageHook baseConfig,
-  handleEventHook = myHandleEventHook <+> handleEventHook baseConfig,
-  -- keys = myKeys <+> keys baseConfig,
-  layoutHook = bluetileLayoutHook,
-  focusedBorderColor= "#00ff00",
-  workspaces = myWorkspaces, 
-  terminal = myXterm
-} `additionalKeys` myKeys
 
-myKeys = 
-    [
+-- baseConfig = xfceConfig
+-- baseConfig = def
+-- 
+-- myConfig = baseConfig { 
+--   manageHook = manageDocks <+> manageHook baseConfig,
+--   handleEventHook = myHandleEventHook <+> handleEventHook baseConfig,
+--   -- keys = myKeys <+> keys baseConfig,
+--   -- layoutHook = bluetileLayoutHook,
+--   focusedBorderColor= "#00ff00",
+--   workspaces = myWorkspaces, 
+--   terminal = myXterm
+-- } `additionalKeys` myKeys
+
+-- myKeys = 
+   -- [
     -- other additional keys
-      ((mod1Mask, xK_Tab), cycleRecentWindows [xK_Alt_L, xK_Alt_R] xK_Tab xK_Tab)
-    ]
+    --  ((mod1Mask, xK_Tab), cycleRecentWindows [xK_Alt_L, xK_Alt_R] xK_Tab xK_Tab)
+    --]
     -- ++
     -- [
     --   ((m .|. mod1Mask, k), windows $ f i) -- Replace 'mod1Mask' with your mod key of choice.
@@ -117,4 +144,4 @@ myKeys =
     -- ]
 
 
-main = xmonad myConfig
+-- main = xmonad myConfig
