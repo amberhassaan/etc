@@ -58,7 +58,9 @@ VIM_BAKDIR="$HOME/.backup"
 mkdir $VIM_BAKDIR
 
 # zsh powerlevel10k theme
-ln -s zsh/powerlevel10k/ zsh/oh-my-zsh/themes/powerlevel10k
+if [[ -f $PWD/zsh/powerlevel10k ]]; then
+  ln -s $PWD/zsh/powerlevel10k/ $PWD/zsh/oh-my-zsh/themes/powerlevel10k
+fi
 
 # update font cache
 fc-cache 

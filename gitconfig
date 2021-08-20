@@ -24,18 +24,18 @@
   graph = log --graph --all --oneline --decorate --color
   st = status -sb
   cl = log --oneline --name-status
+  su = submodule update --init --recursive
 
-[url "git://anongit.kde.org/"]
-	insteadOf = kde:
-
-[url "git@git.kde.org:"]
-	pushInsteadOf = kde:
 [color]
 	ui = true
+
 [format]
+
 [url "ssh://git@github.com/KatanaGraph"]
 	insteadOf = https://github.com/KatanaGraph
+
 [fetch]
 	recurseSubmodules = on-demand
 [submodule]
 	recurse = true
+
