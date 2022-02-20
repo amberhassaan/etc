@@ -41,3 +41,5 @@
 [submodule]
 	recurse = true
 
+[clangFormat]
+	style = file
