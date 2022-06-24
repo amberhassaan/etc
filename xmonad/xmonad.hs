@@ -57,10 +57,12 @@ import Control.Monad(when)
 myConfig = xfceConfig
 
 main = xmonad myConfig
-    { modMask = mod1Mask -- use the TAB button as mod
+    { modMask = mod1Mask -- use the ALT button as mod
     , manageHook = manageHook myConfig <+> myManageHook
     , terminal = myXterm
     , focusedBorderColor= "#00ff00"
+    , handleEventHook = myHandleEventHook <+> handleEventHook myConfig
+    , layoutHook = myLayoutHook
 
     }
 
@@ -79,6 +81,13 @@ myManageHook = composeAll . concat $
 
 -- myXterm = "xterm -fa 'Fantasque Sans Mono' -fs 13.3"
 myXterm = "konsole"
+
+myHandleEventHook = minimizeEventHook
+
+myLayoutHook = noBorders Full  ||| TwoPane (3/100) (1/2) 
+                ||| mouseResizableTile { draggerType=BordersDragger}
+                ||| mouseResizableTileMirrored { draggerType=BordersDragger}
+                ||| Grid||| zoomRow ||| Column (1.0)
 
 -- myHandleEventHook = minimizeEventHook
 

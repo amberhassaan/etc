@@ -23,22 +23,22 @@ UUID=0C99-6DAA  /boot/efi       vfat    defaults        0       1
 # for regular checking
 
 # / was on /dev/sda11 during installation
-UUID=8a2d16b3-c8b4-49cc-8091-d08e5e9cff27 	/               ext4    rw,errors=remount-ro,noatime,data=writeback,commit=5,nobarrier,delalloc	0       1
+UUID=8a2d16b3-c8b4-49cc-8091-d08e5e9cff27 	/               ext4    defaults,rw,errors=remount-ro,noatime,data=writeback,commit=5,nobarrier,delalloc	0       1
 # /home was on /dev/sda10 during installation
-UUID=0731a630-0df1-4cce-addf-ade9831d5aff 	/home           ext4    rw,errors=remount-ro,noatime,data=writeback,commit=5,nobarrier,delalloc	0       2
+UUID=0731a630-0df1-4cce-addf-ade9831d5aff 	/home           ext4    defaults,rw,errors=remount-ro,noatime,data=writeback,commit=5,nobarrier,delalloc	0       2
 # /tmp was on /dev/sda13 during installation
-UUID=396f7e9c-c17d-4451-a9c8-a465a38e3bb7 	/tmp            ext4    rw,errors=remount-ro,noatime,data=writeback,commit=5,nobarrier,delalloc	0       2
+UUID=396f7e9c-c17d-4451-a9c8-a465a38e3bb7 	/tmp            ext4    defaults,rw,errors=remount-ro,noatime,data=writeback,commit=5,nobarrier,delalloc	0       2
 # /var was on /dev/sda14 during installation
-UUID=0963ac89-0bf6-42ab-9c28-deece6a74763 	/var            ext4    rw,errors=remount-ro,noatime,data=writeback,commit=5,nobarrier,delalloc	0       2
+UUID=0963ac89-0bf6-42ab-9c28-deece6a74763 	/var            ext4    defaults,rw,errors=remount-ro,noatime,data=writeback,commit=5,nobarrier,delalloc	0       2
 
 # swap was on /dev/sda12 during installation
-UUID=0efc95a0-5bd8-4eda-ae94-93d15cefed58 none            swap    sw              0       0
+UUID=0efc95a0-5bd8-4eda-ae94-93d15cefed58 	none            swap    sw              0       0
 
 # windows
 # see man ntfs-3g
 # /dev/sda5: LABEL="C" 
-UUID="12A49AC0A49AA62F"		/win/c		ntfs-3g		rw,errors=remount-ro,noatime,big_writes,uid=root,gid=root,dmask=0022,fmask=0133,nls=utf8		0	0 
+UUID="12A49AC0A49AA62F"		/win/c		ntfs-3g		defaults,rw,errors=remount-ro,noatime,big_writes,uid=root,gid=root,dmask=0022,fmask=0133,nls=utf8		0	0 
 # /dev/sda6: LABEL="Work" 
-UUID="C6AACBB2AACB9CF5"		/win/work	ntfs-3g		rw,errors=remount-ro,noatime,big_writes,uid=amber,gid=amber,dmask=0022,fmask=0133,nls=utf8		0	0 
+UUID="C6AACBB2AACB9CF5"		/win/work	ntfs-3g		defaults,rw,errors=remount-ro,noatime,big_writes,uid=amber,gid=amber,dmask=0022,fmask=0133,nls=utf8		0	0 
 # /dev/sda7: LABEL="Bak" 
-UUID="ECB2E7DEB2E7AB72"		/win/bak	ntfs-3g		rw,errors=remount-ro,noatime,big_writes,uid=amber,gid=amber,dmask=0022,fmask=0133,nls=utf8		0	0 
+UUID="ECB2E7DEB2E7AB72"		/win/bak	ntfs-3g		defaults,rw,errors=remount-ro,noatime,big_writes,uid=amber,gid=amber,dmask=0022,fmask=0133,nls=utf8		0	0 
