@@ -30,7 +30,7 @@
 	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
 [submodule "zsh/oh-my-zsh"]
 	path = zsh/oh-my-zsh
-	url = git://github.com/robbyrussell/oh-my-zsh.git
+	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
