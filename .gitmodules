@@ -52,3 +52,6 @@
 [submodule "vim/bundle/asyncomplete"]
 	path = vim/bundle/asyncomplete
 	url = https://github.com/prabirshrestha/asyncomplete.vim
+[submodule "vim/bundle/vim-easycomplete"]
+	path = vim/bundle/vim-easycomplete
+	url = https://github.com/jayli/vim-easycomplete.git
