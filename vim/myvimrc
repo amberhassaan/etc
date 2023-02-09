@@ -117,6 +117,15 @@ set hls
 set incsearch
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" LSP EasyCompletion key bindings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap \r :EasyCompleteReference<CR>
+nnoremap \d :EasyCompleteGotoDefinition<CR>
+nnoremap <silent> <C-k> :EasyCompleteNextDiagnostic<CR>
+nnoremap <silent> <C-j> :EasyCompletePreviousDiagnostic<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""" Settings for C++ enhanced highlighting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:cpp_class_scope_highlight = 1
