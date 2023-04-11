@@ -1,0 +1,5 @@
+Install npm or yarn
+cd bundle/coc
+yarn install or npm install
+open vim
+:CocInstall coc-clangd

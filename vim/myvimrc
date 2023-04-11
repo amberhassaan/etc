@@ -117,13 +117,9 @@ set hls
 set incsearch
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""" LSP EasyCompletion key bindings
+"""""""""""""" LSP key bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap \r :EasyCompleteReference<CR>
-nnoremap \d :EasyCompleteGotoDefinition<CR>
-nnoremap <silent> <C-k> :EasyCompleteNextDiagnostic<CR>
-nnoremap <silent> <C-j> :EasyCompletePreviousDiagnostic<CR>
-
+source $HOME/etc/vim/mycocsettings.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""" Settings for C++ enhanced highlighting

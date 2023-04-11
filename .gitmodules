@@ -37,3 +37,6 @@
 [submodule "zsh/powerlevel10k"]
 	path = zsh/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "vim/bundle/coc"]
+	path = vim/bundle/coc
+	url = https://github.com/neoclide/coc.nvim.git
