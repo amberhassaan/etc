@@ -58,9 +58,15 @@ VIM_BAKDIR="$HOME/.backup"
 mkdir $VIM_BAKDIR
 
 # zsh powerlevel10k theme
-if [[ -f $PWD/zsh/powerlevel10k ]]; then
+if [[ -d $PWD/zsh/powerlevel10k ]]; then
   ln -s $PWD/zsh/powerlevel10k/ $PWD/zsh/oh-my-zsh/themes/powerlevel10k
 fi
+
+# kwinrc settings
+cat >> $HOME/.config/kwinrc <<HERE
+[Windows]
+BorderlessMaximizedWindows=true
+HERE
 
 # update font cache
 fc-cache 
