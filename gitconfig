@@ -1,6 +1,7 @@
 [user]
 	name = M. Amber Hassaan
 	email = amber_474@yahoo.com
+	signingKey = 0E61B508D6655FAE9CB9B7F04FE5EC5DC564F6B3
 
 [diff]
   tool = vimdiff
@@ -24,6 +25,8 @@
   # aliases with _ in the name not allowed
   graph = log --graph --all --oneline --decorate --color
   st = status -sb
+  cs = commit -S
+  csa = commit -S -a
   cl = log --oneline --name-status
   su = submodule update --init --recursive
   copr = "!f() { git fetch upstream pull/$1/head:pr_$1 &&  git checkout pr_${1}; }; f"
@@ -45,3 +48,5 @@
 	style = file
 [pull]
 	rebase = true
+[commit]
+	gpgsign = true
