@@ -1,7 +1,7 @@
 [user]
 	name = M. Amber Hassaan
 	email = amber_474@yahoo.com
-	signingKey = 0E61B508D6655FAE9CB9B7F04FE5EC5DC564F6B3
+	signingKey = B34527032E9018A782A6133EB45C1ADEB9D69432
 
 [diff]
   tool = vimdiff
