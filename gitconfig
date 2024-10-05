@@ -24,7 +24,7 @@
 [alias]
   # aliases with _ in the name not allowed
   graph = log --graph --all --oneline --decorate --color
-  st = status -sb
+  st = status -sb --porcelain
   cs = commit -S
   csa = commit -S -a
   cl = log --oneline --name-status

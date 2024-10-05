@@ -52,9 +52,10 @@ NOCOLOR="\[\033[0;00m\]"
 
 function parse_git_branch () {
   local git_cmd="git status -b --porcelain 2> /dev/null | grep -v '^[ ?]?'";
-  if [ -n "$(eval $git_cmd)" ] ; then
-    local B=$(eval "$git_cmd" | head -n 1 | cut -d ' ' -f 2);
-    local numMod=$(eval "$git_cmd" | wc -l);
+  local tmp=$(eval $git_cmd)
+  if [ -n "$tmp" ] ; then
+    local B=$(echo "$tmp"| head -n 1 | cut -d ' ' -f 2);
+    local numMod=$(echo "$tmp" | wc -l);
     if [ "$numMod" -gt 1 ]; then 
       echo "(*$B*)";
     else 
