@@ -16,7 +16,7 @@ set $right l
 
 default_border none
 default_floating_border none
-font Monospace:regular 9
+font Monospace:regular 8
 titlebar_padding 1
 titlebar_border_thickness 0
 
