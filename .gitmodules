@@ -40,3 +40,6 @@
 [submodule "vim/bundle/coc"]
 	path = vim/bundle/coc
 	url = https://github.com/neoclide/coc.nvim.git
+[submodule "vim/bundle/fzf"]
+	path = vim/bundle/fzf
+	url = https://github.com/junegunn/fzf.git
